@@ -5,11 +5,3 @@ function reverse(str) {
     }
     return console.log(result);
 }
-
-/*
-
-reverse('yoyoyo');
-reverse('1abc2');
-reverse('1,2,3,2,1');
-
-*/

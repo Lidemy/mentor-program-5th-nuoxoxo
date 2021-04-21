@@ -7,6 +7,3 @@ function printStar1(n){
     }
 }
 
-//printStars(6);
-//printStars(3);
-//printStars(6);
