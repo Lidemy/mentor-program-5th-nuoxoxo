@@ -18,29 +18,19 @@ rl.on('close', function() {
 // Solver function
 
 function isPrime(n){
-  if (n == 1){
-    return 'Composite';
-  } else {
-    for (let i = 2; i < n; i ++){
-      if (n % i == 0){
-        return 'Composite';
+  if (n === 1) return false;
+  for (let i = 2; i < n; i ++){
+      if (n % i === 0) {
+        return false;
       }
-    } 
-    return 'Prime';
   }
+  return true;
 }
 
-function solve(lines) {
-  if ( Number(lines[0]) >= 1 && Number(lines[0] <= 100 )){
-    let len = Number(lines[0]);
-    let tmp;
 
-    for (let i = 1; i < len + 1; i++){
-      tmp = Number(lines[i]);
-      if ( tmp >= 1 && tmp <= 100000 ) {
-        console.log(isPrime(tmp));
-      }
-    }
+function solve(lines) {
+  for (let i = 1; i < lines.length; i++){
+    console.log( isPrime(Number(lines[i]) ) ? 'Prime' : 'Composite')
   }
 }
 

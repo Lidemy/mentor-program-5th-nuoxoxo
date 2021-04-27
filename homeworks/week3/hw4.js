@@ -17,8 +17,6 @@ rl.on('close', function() {
 
 function solve(lines) {
 
-  console.log(lines);
-
   for (let i = 0; i < Math.floor(lines[0].length / 2); i++){
     if (lines[0][i] != lines[0][lines[0].length - 1 - i]){
       console.log("False");
