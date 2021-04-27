@@ -18,8 +18,8 @@ rl.on('close', function() {
 
 // Solver function
 
-function solve(lines) {
-  let [ n, m ] = lines[0].split(' ').map(Number);
+function solve(arr) {
+  let [ n, m ] = arr[0].split(' ').map(Number);
   let sum, len, a, b;
 
   for (let i = n; i < m + 1; i++){
@@ -34,7 +34,7 @@ function solve(lines) {
     b = i;
 
     for (let j = 0; j < len; j++){
-      sum += Math.pow(b % 10, len);
+      sum += b % 10 ** len;
       b = Math.floor(b / 10);
     }
 
