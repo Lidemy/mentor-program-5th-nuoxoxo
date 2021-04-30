@@ -22,26 +22,26 @@ Codewar 是一個程式解題平台，上面充滿著各種開發者出的題目
 
 ## 零顆星（超簡單）
 
-### ❌ Opposite number
+### ✅ Opposite number
 題目連結：https://www.codewars.com/kata/opposite-number/javascript  
 題目說明：正數變負數，反之亦然
 
-### ❌ Even or Odd
+### ✅ Even or Odd
 題目連結：https://www.codewars.com/kata/even-or-odd/javascript  
 題目說明：判斷是奇數或是偶數
 
 ## 一顆星（熟悉語法）
 
-### ❌ Number-Star ladder
+### ✅ Number-Star ladder
 題目連結：https://www.codewars.com/kata/number-star-ladder/javascript  
 題目說明：
 這題就是依照規律輸出文字，沒什麼好講的
 
-### ❌ Who likes it
+### ✅ Who likes it
 題目連結：https://www.codewars.com/kata/who-likes-it  
 題目說明：模擬 Facebook 按讚時或出現的文字
 
-### ❌ String repeat
+### ✅ String repeat
 題目連結：https://www.codewars.com/kata/string-repeat/javascript  
 題目說明：回傳重複 n 遍的字串
 
@@ -98,7 +98,7 @@ Codewar 是一個程式解題平台，上面充滿著各種開發者出的題目
 題目連結：https://www.codewars.com/kata/take-a-ten-minute-walk/javascript  
 題目說明：有一個人他可以往東南西北這四個方向走，請幫他計算它能否剛好在十步的時候回到原點
 
-### ❌ Tribonacci Sequence
+### ✅ Tribonacci Sequence
 題目連結：https://www.codewars.com/kata/tribonacci-sequence/javascript  
 題目說明：費式數列的進階版
 
@@ -115,7 +115,7 @@ input 會給你每天的氣象預報，基本上就是下雨跟沒下雨。如�
 
 `["rainy", "rainy", "rainy", "rainy", "thunderstorms", "rainy"]`的話，每一天的早上跟晚上都在下雨，所以只要買一把傘就可以從家裡到公司，再從公司帶回家裡。
 
-### ❌ Check if two words are isomorphic to each other
+### ✅ Check if two words are isomorphic to each other
 題目連結：https://www.codewars.com/kata/check-if-two-words-are-isomorphic-to-each-other  
 題目說明：  
 這題比較複雜一點，如果兩個字串 A 跟 B 存在「一對一關係」，那我們就可以說這兩個字串是同構（isomorphic）的。  
