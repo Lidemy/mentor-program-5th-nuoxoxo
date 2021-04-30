@@ -45,56 +45,56 @@ Codewar 是一個程式解題平台，上面充滿著各種開發者出的題目
 題目連結：https://www.codewars.com/kata/string-repeat/javascript  
 題目說明：回傳重複 n 遍的字串
 
-### ❌ Build Tower
+### ✅ Build Tower
 題目連結：https://www.codewars.com/kata/build-tower  
 題目說明：
 也是依照規律輸出文字即可
 
-### ❌ Reversed Strings
+### ✅ Reversed Strings
 題目連結：https://www.codewars.com/kata/reversed-strings/javascript  
 題目說明：
 把輸入的文字反轉過後回傳，如果想挑戰自己的話，可以試試看用陣列的各種內建函式組合完成
 
-### ❌ Reversed Words
+### ✅ Reversed Words
 題目連結：https://www.codewars.com/kata/reversed-words  
 題目說明：
 這一題是進階版的字串反轉，原本的只要把每個「字元」反轉，這個則是要把每個「單字」反轉。
 
-### ❌ Alternate case
+### ✅ Alternate case
 題目連結：https://www.codewars.com/kata/alternate-case  
 題目說明：把大寫字母轉成小寫，小寫字母轉成大寫
 
-### ❌ You only need one - Beginner
+### ✅ You only need one - Beginner
 題目連結：https://www.codewars.com/kata/you-only-need-one-beginner/javascript  
 題目說明：回傳要找的元素是否在陣列裡面
 
-### ❌ Find the capitals
+### ✅ Find the capitals
 題目連結：https://www.codewars.com/kata/find-the-capitals-1/javascript  
 題目說明：回傳大寫字母所在的 index
 
-### ❌ Sum arrays
+### ✅ Sum arrays
 題目連結：https://www.codewars.com/kata/sum-arrays/javascript  
 題目說明：把陣列加總回傳結果
 
-### ❌ Find the smallest integer in the array
+### ✅ Find the smallest integer in the array
 題目連結：https://www.codewars.com/kata/find-the-smallest-integer-in-the-array   
 題目說明：找出陣列中最小的數字
 
 ## 兩顆星（需要花點時間思考）
 
-### ❌ Shortest Word
+### ✅ Shortest Word
 題目連結：https://www.codewars.com/kata/shortest-word/javascript  
 題目說明：回傳最短的單字的長度
 
-### ❌ Bit Counting
+### ✅ Bit Counting
 題目連結：https://www.codewars.com/kata/bit-counting/javascript  
 題目說明：計算 bit 的總數
 
-### ❌ Find The Parity Outlier
+### ✅ Find The Parity Outlier
 題目連結：https://www.codewars.com/kata/find-the-parity-outlier/javascript   
 題目說明：全部的數字裡，只有一個的奇偶跟其他的不一樣，你要找出這個數字
 
-### ❌ Take a Ten Minute Walk
+### ✅ Take a Ten Minute Walk
 題目連結：https://www.codewars.com/kata/take-a-ten-minute-walk/javascript  
 題目說明：有一個人他可以往東南西北這四個方向走，請幫他計算它能否剛好在十步的時候回到原點
 
