@@ -30,7 +30,7 @@ switch(argv[2]){
 
 function listBooks() {
   
-  let q = '?_limit=50'
+  let q = '?_limit=20'
   let path = route + q
   
   request(path, (err, res, body) => {
