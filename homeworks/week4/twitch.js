@@ -31,29 +31,37 @@ request (options_first, (err, res, body) => {
     return console.log(err)
   }
   
-  let data = JSON.parse(body)
-  let n = Number(NUM)
+  try {
+    let data = JSON.parse(body)
+    let n = Number(NUM)
 
-  let len = ( n <= data.streams.length ) ? n : data.streams.length
-  if (len === 0) {
-    return console.log(`GAME '${GAME} NOT FOUND'.`)
-  }
+    let len = ( n <= data.streams.length ) ? n : data.streams.length
+    if (len === 0) {
+      return console.log(`GAME '${GAME} NOT FOUND'.`)
+    }
   
-  for (let i = 0; i < len; i++){
-    console.log(`${i + 1}: ${data.streams[i]._id} ${data.streams[i].channel.display_name}`)
-  }
-
-  request (options_after, (err, res, body) => {
-    if (err){
-      return console.log(err)
-    }
-    data = JSON.parse(body)
-    len = ( n <= data.streams.length ) ? n : data.streams.length
     for (let i = 0; i < len; i++){
-      console.log(`${i + 101}: ${data.streams[i]._id} ${data.streams[i].channel.display_name}`)
+      console.log(`${i + 1}: ${data.streams[i]._id} ${data.streams[i].channel.display_name}`)
     }
-  })
+
+    request (options_after, (err, res, body) => {
+      if (err){
+        return console.log(err)
+      }
+      
+      try {
+        data = JSON.parse(body)
+        len = ( n <= data.streams.length ) ? n : data.streams.length
+        for (let i = 0; i < len; i++){
+          console.log(`${i + 101}: ${data.streams[i]._id} ${data.streams[i].channel.display_name}`)
+        }
+      } catch (e) {
+        return console.log(e)
+      }
+    })
+  } catch (e) {
+    return console.log(e)
+  }
 
   return
 })
-    
