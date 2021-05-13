@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"!-->
+    <link href="./styles.css" rel="stylesheet"></link>
+    <title>Lazy Form</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <form>
+        
+        <!-- 從這裡開始 form 的主體 -->
+        <!--  首  先  是  form title  -->
+        <div class="form-title">
+          <h1 class="form-title-main">新拖延運動報名表單</h1>
+          <p class="form-title-sub">活動日期：2020/12/10 ~ 2020/12/11<br>活動地點：台北市大安區新生南路二段1號</p>
+          <p class="form-title-misc">* 必填</p>
+        </div>
+        
+        <!--  個人信息 input fields, 3 個  -->
+        <!--  1/3  暱 稱  -->
+        <div class="form-input form-input-nickname required">暱稱</div>
+        <input type="text" name="nickname" placeholder="您的回答" autocomplete="off" autofocus/>
+
+        <!--  2/3  電 子 郵 件  -->
+        <div class="form-input form-input-nickname required">電子郵件</div>
+        <input type="text" name="email" placeholder="您的電子郵件" autocomplete="off" autofocus/>
+
+        <!--  3/3  手 機 號 碼  -->
+        <div class="form-input form-input-nickname required">手機號碼</div>
+        <input type="text" name="email" placeholder="您的手機號碼" autocomplete="off" autofocus/>
+
+        <!--  報名類型, radio, 獨立的 block  -->
+        <div class="form-input form-input-how required">報名類型</div>
+        <label><input type="radio" name="method" value="1"/>躺在床上憑想像力實作</label>
+        <label><input type="radio" name="method" value="2"/>趴草地上上網找現成的</label>
+
+        <!--  其他信息 input fields, 2 個  -->
+        <!--  1/2  怎麼知道這個活動  -->
+        <div class="form-input form-input-know required">怎麼知道這個活動的？</div>
+        <input type="text" name="how do you get in touch with us" placeholder="您的回答" autocomplete="off" autofocus/>
+
+        <!--  2/2  其  他  -->
+        <div class="form-input form-input-other">其他</div>
+        <div class="form-title-sub">對活動的一些建議</div>
+        <textarea placeholder="您的回答"></textarea>
+        
+
+        <!--  提交按鈕 & 溫馨提醒  -->
+        <div class="form-input">
+        <input type="submit" class="form-input form-title-submit" value="提交"/>
+        </div>
+        <div class="form-title-sub">請勿透過表單送出您的密碼。</div>
+    
+    </form>
+    </div>
+
+    <footer>© 2020 © Copyright. All rights Reserved.</footer>
+  
+  </body>
+  </body>
+</html>
