@@ -74,13 +74,7 @@ request ({
                   console.log(err)
                 }
                 for (let i = 0; i < 200; i++) {
-                  if (i + 1 < 10) { 
-                    console.log(`00${i + 1} ${all_names[i]}`)
-                  } else if (i + 1 < 100 && i + 1 >= 10) {
-                    console.log(`0${i + 1} ${all_names[i]}`)
-                  } else {
-                    console.log(`${i + 1} ${all_names[i]}`)
-                  }
+                  console.log((i + 1).toString().padStart(3, '0') + ' ' + all_names[i])
                 }
               }
             )
