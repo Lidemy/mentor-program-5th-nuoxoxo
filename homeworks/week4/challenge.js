@@ -85,8 +85,7 @@ function createBooks(name) {
     path: '/books',
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': data.length,
+      'Content-Type': 'application/json'
     },
   }
 
@@ -147,8 +146,7 @@ function updateBooks(id, name) {
     path: `/books/${id}`,
     method: 'PATCH',
     headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': data.length,
+      'Content-Type': 'application/json'
     },
   }
 
