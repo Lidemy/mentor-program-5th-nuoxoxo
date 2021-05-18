@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <title>Hacker News</title>
+    <style>
+      *{padding: 0; margin:0}
+      body {font-family: Verdana, Geneva, sans-serif;}
+      a {text-decoration: none; }
+      a:visited {color: inherit}
+      .box {background-color: #f6f6ef; margin: 8px auto; width: 84%; padding-bottom: 16px}
+      /* 👆 MAGIC: 10px top margin, auto for R D L */
+      .box-head {display: flex; align-items: center; background-color: #f60; line-height: 0}
+      /* 👆 line-height: 0 ; cancels mysterious spacing at the bottom*/
+      .box-head-left {padding-right: 2px; padding: 2px 4px 2px 2px}
+      .box-head-y-logo {border: 1px solid white; margin: auto; }
+      .box-head-center {display: flex; flex-grow: 1; align-items: center; font-size: 13px;} 
+      /* 👆 Magic Move: flex-grow: 1 */
+      .box-head-center-title {font-weight: bold;}
+      .box-head-center-content {padding: 0 10px 0 10px;}  /* 👈 padding: U R D L */
+      .box-head-center-content li {display: inline-block; }
+      .box-head-login {padding-right: 6px;}
+      .box-body {display:block; border-bottom:2px solid #f60}
+      .box-body ul {list-style-type: none;}
+      .box-body a:hover {text-decoration: underline;}
+      .box-body-news {display: inline-block; margin-bottom:3px; font-size: 10pt;}
+      li div:first-of-type {display: inline-block; color:#828282; }
+      li div:nth-of-type(2) {display: inline-block; color:#828282; font-size: 10px}
+      a.box-body-news-link {display:inline-block; color: #828282;font-size:8pt}
+      .box-body-news-sub {color: #828282;font-size:7pt;margin: 0 0 8px 41px;}
+      .single-digit {margin-left: 8px}
+      .more {padding: 0px 0px  12px 41px; color:#828282}
+      .foot {text-align: center; font-size:10pt;}
+      .foot-links a {text-decoration: none; font-size:8pt; color:#000;}
+      .foot-search {display: block; color: #828282;}
+      .space-above-more {height: 12px}
+      input {width: 148px; height: 18px;}
+      #debug {border: 2px solid gold;}
+    </style>
+  </head>
+  <body>
+    <div class="box" >
+      <div class="box-head" >
+        <div class="box-head-left">
+          <a href="https://news.ycombinator.com/">
+            <img class="box-head-y-logo" src="https://news.ycombinator.com/y18.gif">
+          </a>
+        </div>
+        <div class="box-head-center">
+          <a href="https://news.ycombinator.com/news" class="box-head-center-title">Hacker News</a>
+          <ul class="box-head-center-content">
+            <li><a href="#">new</a></li> | 
+            <li><a href="#">past</a></li> | 
+            <li><a href="#">comments</a></li> | 
+            <li><a href="#">ask</a></li> | 
+            <li><a href="#">show</a></li> | 
+            <li><a href="#">jobs</a></li> | 
+            <li><a href="#">submit</a></li>
+          </ul>
+        </div>
+        <div>
+          <a class="box-head-login" href="#">Login</a>
+        </div>
+      </div>
+      <div style="height:10px;"></div>
+      <div class="box-body">
+        <ul class="box-body-30">
+          <li>
+            <div class="box-body-news single-digit">1.</div>
+            <div>▲</div>
+            <div class="box-body-news">BPF for Storage: An Exokernel-Inspired Approach [pdf] </div>
+            <a href="#" class="box-body-news-link">(sigops.org)</a>
+            <div class="box-body-news-sub">11 points by ingve 32 minutes ago | hide | discuss</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit">2.</div>
+            <div>▲</div>
+            <div class="box-body-news">Breakthrough in deciphering Minoan Linear A script</div>
+            <a href="#" class="box-body-news-link">(greekreporter.com) </a>
+            <div class="box-body-news-sub" >88 points by qsi 3 hours ago | hide | 11 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit ">3. </div>
+            <div>▲</div>
+            <div class="box-body-news">Why is the Gaza Strip blurry on Google Maps? </div>
+            <a href="#" class="box-body-news-link">(bbc.com)</a>
+            <div class="box-body-news-sub">857 points by vanusa 13 hours ago | hide | 463 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit">4. </div>
+            <div>▲</div>
+            <div class="box-body-news">Site Isolation in Firefox </div>
+            <a href="#" class="box-body-news-link">(blog.mozilla.org)</a>
+            <div class="box-body-news-sub">51 points by arthuredelstein 1 hour ago | hide | 6 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit">5. </div>
+            <div>▲</div>
+            <div class="box-body-news">Hyundai Nexo sets new world record 887.5 km travelled on single tank of hydrogen 
+              </div>
+            <a href="#" class="box-body-news-link">(h2-view.com)</a>
+            <div class="box-body-news-sub">213 points by teleforce 4 hours ago | hide | 283 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit">6. </div>
+            <div>▲</div>
+            <div class="box-body-news">Keeper Tax (YC W19) Is Hiring in San Francisco 
+              </div>
+            <a href="#" class="box-body-news-link">(notion.so)</a>
+            <div class="box-body-news-sub">11 minutes ago | hide</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit">7. </div>
+            <div>▲</div>
+            <div class="box-body-news">Fierce Nerds </div>
+            <a href="#" class="box-body-news-link">(paulgraham.com)</a>
+            <div class="box-body-news-sub">197 points by prtkgpt 3 hours ago | hide | 222 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit">8. </div>
+            <div>▲</div>
+            <div class="box-body-news">Halide for iPad 
+              </div>
+            <a href="#" class="box-body-news-link">(lux.camera)</a>
+            <div class="box-body-news-sub">38 points by uptown 1 hour ago | hide | 8 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news single-digit">9. </div>
+            <div>▲</div>
+            <div class="box-body-news">Forced Entrepreneurs 
+              </div>
+            <a href="#" class="box-body-news-link">(ssrn.com)</a>
+            <div class="box-body-news-sub">79 points by yarapavan 2 hours ago | hide | 41 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">10. </div>
+            <div>▲</div>
+            <div class="box-body-news">First Public Working Drafts: WebGPU and WebGPU Shading Language 
+              </div>
+            <a href="#" class="box-body-news-link">(w3.org)</a>
+            <div class="box-body-news-sub">74 points by bpierre 2 hours ago | hide | 28 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">11. </div>
+            <div>▲</div>
+            <div class="box-body-news">Ad block shouldn't break your checkout </div>
+            <a href="#" class="box-body-news-link">(ilakovac.com)</a>
+            <div class="box-body-news-sub">112 points by infomiho 4 hours ago | hide | 83 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">12. </div>
+            <div>▲</div>
+            <div class="box-body-news">Building Products at Stripe </div>
+            <a href="#" class="box-body-news-link">(bringthedonuts.com)</a>
+            <div class="box-body-news-sub">68 points by herbertl 2 hours ago | hide | 3 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">13. </div>
+            <div>▲</div>
+            <div class="box-body-news">First steps to converting 2.4GHz WiFi into usable energy to power small devices </div>
+            <a href="#" class="box-body-news-link">(nature.com)</a>
+            <div class="box-body-news-sub">47 points by giuliomagnifico 3 hours ago | hide | 34 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">14. </div>
+            <div>▲</div>
+            <div class="box-body-news">AMP pages no longer get preferential treatment in Google search </div>
+            <a href="#" class="box-body-news-link">(plausible.io)</a>
+            <div class="box-body-news-sub">199 points by ColinWright 7 hours ago | hide | 46 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">15. </div>
+            <div>▲</div>
+            <div class="box-body-news">1Password for Linux </div>
+            <a href="#" class="box-body-news-link">(1password.com)</a>
+            <div class="box-body-news-sub">239 points by grappler 3 hours ago | hide | 151 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">16. </div>
+            <div>▲</div>
+            <div class="box-body-news">	Circuit Synthesis for Analog Computing </div>
+            <a href="#" class="box-body-news-link">(sigplan.org)</a>
+            <div class="box-body-news-sub">37 points by matt_d 3 hours ago | hide | 1 comment</div>
+          </li>
+          <li>
+            <div class="box-body-news">17. </div>
+            <div>▲</div>
+            <div class="box-body-news">Amazon is reportedly negotiating to acquire MGM for about $9B </div>
+            <a href="#" class="box-body-news-link">(businessinsider.com)</a>
+            <div class="box-body-news-sub">160 points by pseudolus 3 hours ago | hide | 167 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">18. </div>
+            <div>▲</div>
+            <div class="box-body-news">It's time for a data-first front end revolution </div>
+            <a href="#" class="box-body-news-link">(kea.js.org)</a>
+            <div class="box-body-news-sub">23 points by feross 1 hour ago | hide | 11 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">19. </div>
+            <div>▲</div>
+            <div class="box-body-news">40-core Mac Pro reportedly in development by Apple </div>
+            <a href="#" class="box-body-news-link">(9to5mac.com)</a>
+            <div class="box-body-news-sub"> 167 points by ed25519FUUU 3 hours ago | hide | 110 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">20. </div>
+            <div>▲</div>
+            <div class="box-body-news">AirPods Max and AirPods Pro Don't Support Apple Music Lossless, Apple Confirms </div>
+            <a href="#" class="box-body-news-link">(t3.com)</a>
+            <div class="box-body-news-sub"> 103 points by lelf 1 hour ago | hide | 151 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">21. </div>
+            <div>▲</div>
+            <div class="box-body-news">Mac the Knife </div>
+            <a href="#" class="box-body-news-link">(mameworld.info)</a>
+            <div class="box-body-news-sub">68 points by ingve 5 hours ago | hide | 12 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">22. </div>
+            <div>▲</div>
+            <div class="box-body-news">Glue: Linked Data Visualizations Across Multiple Files </div>
+            <a href="#" class="box-body-news-link">(github.com/glue-viz)</a>
+            <div class="box-body-news-sub">29 points by polm23 2 hours ago | hide | 3 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">23. </div>
+            <div>▲</div>
+            <div class="box-body-news">Bit-sync: synchronizing arbitrary data using rsync algorithm in pure JavaScript </div>
+            <a href="#" class="box-body-news-link">(github.com/claytongulick)</a>
+            <div class="box-body-news-sub">85 points by ingve 7 hours ago | hide | 13 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">24. </div>
+            <div>▲</div>
+            <div class="box-body-news">Uber Engineering Tricks of the Trade: Tuning JVM Memory for Large-Scale Services</div>
+            <a href="#" class="box-body-news-link">(uber.com)</a>
+            <div class="box-body-news-sub">3 points by commandlinefan 30 minutes ago | hide | discuss</div>
+          </li>
+          <li>
+            <div class="box-body-news">25. </div>
+            <div>▲</div>
+            <div class="box-body-news">The Solid Steel Yarn Winder</div>
+            <a href="#" class="box-body-news-link">(fos.tech)</a>
+            <div class="box-body-news-sub">3 points by dharmab 34 minutes ago | hide | 1 comment</div>
+          </li>
+          <li>
+            <div class="box-body-news">26. </div>
+            <div>▲</div>
+            <div class="box-body-news">Tax Evasion at the Top of the Income Distribution: Theory and Evidence</div>
+            <a href="#" class="box-body-news-link">(nber.org)</a>
+            <div class="box-body-news-sub">99 points by paulpauper 2 hours ago | hide | 37 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">27. </div>
+            <div>▲</div>
+            <div class="box-body-news">Ask HN: Desperately need “sales for nerds” advice</div>
+            <a href="#" class="box-body-news-link"></a>
+            <div class="box-body-news-sub">94 points by c1sc0 7 hours ago | hide | 98 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">28. </div>
+            <div>▲</div>
+            <div class="box-body-news">Bending microwaves the “wrong” way (2004)</div>
+            <a href="#" class="box-body-news-link">(boeing.com)</a>
+            <div class="box-body-news-sub">6 points by graderjs 1 hour ago | hide | 3 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">29. </div>
+            <div>▲</div>
+            <div class="box-body-news">The Graphics Gremlin – An Open Source Retro ISA Video Card</div>
+            <a href="#" class="box-body-news-link">(github.com/schlae)</a>
+            <div class="box-body-news-sub">108 points by zdw 10 hours ago | hide | 29 comments</div>
+          </li>
+          <li>
+            <div class="box-body-news">30. </div>
+            <div>▲</div>
+            <div class="box-body-news">Breakthrough in deciphering Minoan Linear A script</div>
+            <a href="#" class="box-body-news-link">(greekreporter.com)</a>
+            <div class="box-body-news-sub">174 points by qsi 12 hours ago | hide | 35 comments</div>
+          </li>
+          <li class="space-above-more"></li>
+          <li class="more"><a>More</a></li>
+        </ul>
+      </div><br>
+      <div class="foot">
+        <span class="foot-links">
+          <a href="#">Guidelines</a> | 
+          <a href="#">FAQ</a> | 
+          <a href="#">Lists</a> | 
+          <a href="#">API</a> | 
+          <a href="#">Security</a> | 
+          <a href="#">Legal</a> | 
+          <a href="#">Apply to YC</a> | 
+          <a href="#">Contact</a>
+        </span><br><br>
+        <form class="foot-search">Search: 
+          <input type="text" autocomplete="false">
+        </form>
+      </div>
+  </body>
+</html>
