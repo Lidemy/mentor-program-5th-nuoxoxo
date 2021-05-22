@@ -15,8 +15,8 @@ a {
     height: 84px;
     background: white;
     display: flex;
-    justify-content:space-between;
-    align-items:center;
+    justify-content: space-between;
+    align-items: center;
     padding: 0px 20px;
 }
 
@@ -24,14 +24,14 @@ a {
     font-family: Questrial;
     font-size: 36px;
     color: #489846
-  }
+}
 
 .navbar__list {
-    padding:0;
-    margin:0;
-    list-style:none;
-    display:flex;
-    font-size:18px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    font-size: 18px;
 }
 
 .navbar__list li {
@@ -41,7 +41,7 @@ a {
     transition: background 0.2s;
 }
 
-.navbar__list li.active, 
+.navbar__list li.active,
 .navbar__list li:hover {
     background: #dd7286
 }
@@ -50,10 +50,10 @@ a {
     display: block;
     text-decoration: none;
     color: inherit;
-    padding:12px 24px;
+    padding: 12px 24px;
 }
 
-.navbar__list li.active a, 
+.navbar__list li.active a,
 .navbar__list li:hover a {
     color: white
 }
@@ -74,11 +74,11 @@ a {
 
 .banner:after {
     content: "";
-    position: absolute; 
+    position: absolute;
     /* abs 的定位是往上找第一個不是 static 的元素
     因此 .banner 應設為 relative 
     .banner h1 設為 relative && z-index: 2 */
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     top: 0;
     bottom: 0;
     left: 0;
@@ -107,9 +107,9 @@ a {
     display: inline-block;
     font-size: 36px;
     border-left: solid 15px #a3dea2;
-     /* margin 是對外的 padding 是對內 */
-     padding-left: 16px;
-     margin-bottom: 36px;
+    /* margin 是對外的 padding 是對內 */
+    padding-left: 16px;
+    margin-bottom: 36px;
 }
 
 .section__desc {
@@ -117,8 +117,8 @@ a {
     line-height: 2em;
     /* em 就是 font size */
     /* rem 是針對 body 的 font size */
-    margin: 0px 0px 68px 0px 
-    /* margin: 上右下左 */
+    margin: 0px 0px 68px 0px
+        /* margin: 上右下左 */
 }
 
 .button {
@@ -144,8 +144,8 @@ a {
     background: #f9f9b5;
 }
 
-.section__images{
-    display:flex;
+.section__images {
+    display: flex;
 }
 
 .section__images div {
@@ -176,13 +176,28 @@ a {
     margin-right: 16px;
 }
 
-.footer__info div + div {
+.footer__info div+div {
     margin-top: 10px;
 }
 
-.footer__site {
-   font-size: 36px;
-   color: #489846
+.footer__info div:hover {
+    color: #489846;
+    transition: 0.2s;
+}
+
+.footer__site__title {
+    font-size: 36px;
+    color: #489846
+}
+
+.footer__site__links {
+    text-align: center;
+    margin: 6px;
+}
+
+.footer__site__links a:hover {
+    color: #3bb638;
+    transition: 0.2s;
 }
 
 .footer__bottom {
@@ -196,60 +211,75 @@ a {
 .section__comments {
     display: flex;
     margin-top: 72px;
-  }
+}
 
-  .comment {
+.section__comments div {
+    margin-right: 8px;
+    margin-left: 8px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.section__comments div:last-of-type {
+    margin-right: 0px;
+}
+
+.section__comments div:first-of-type {
+    margin-left: 0px;
+}
+
+
+.comment {
     border-radius: 5px;
     box-shadow: -1.4px -1.4px 4px 0 #d8eaef;
     border: solid 1px #c7e5ec;
     height: 220px;
     padding: 16px;
     position: relative;
-  }
+}
 
-  .comment + .comment {
-    margin-left: 16px;
-  }
 
-  .comment__avatar {
+
+
+.comment__avatar {
     width: 105px;
     height: 105px;
     border-radius: 50%;
     overflow: hidden;
     border: solid 0.5px darkgrey;
-  }
+}
 
-  .comment__avatar img {
+.comment__avatar img {
     width: 100%;
     height: 100%;
-  }
+}
 
-  .comment__author {
-    display: inline-block;
+.comment__author {
+    /* display: inline-block; */
     position: absolute;
     top: 18px;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
 
-  .comment__author p {
+.comment__author p {
     margin-top: 5px;
     line-height: 18px;
-  }
+}
 
-  .comment__content {
+.comment__content {
     text-align: left;
     position: relative;
     top: 40%;
     line-height: 1.5em;
-  }
+}
 
 @media(max-width: 768px) {
     .navbar .wrapper {
         height: 120px;
-        flex-direction:column;
-        justify-content:space-between;
-        padding:0px
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0px
     }
 
     .navbar__site-name {
@@ -260,7 +290,7 @@ a {
         display: flex;
         width: 100%;
     }
-    
+
     .navbar__list li {
         flex: 1;
         margin-left: 0;
@@ -291,22 +321,21 @@ a {
     .footer__info {
         margin-right: 0;
         margin-top: 16px;
-        /* viewport 縮小後 margin-right 變成 margin-top 很合理 */ 
+        /* viewport 縮小後 margin-right 變成 margin-top 很合理 */
     }
-    
+
     .section__comments {
         flex-direction: column;
     }
-    
-    .comment + .comment {
+
+    .comment+.comment {
         margin-left: 0;
         margin-top: 82px;
     }
 
     .footer__bottom {
-        padding: 20px; 
+        padding: 20px;
         text-align: center;
     }
-    
-}
 
+}
