@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Form</title>
+</head>
+<style>
+  .container {
+    max-width: 512px;
+    color: #189099;
+    background-color: #fffce4;
+    margin: 5% auto;
+    box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+    border-top: solid 6px #fad312;
+    padding: 64px 32px;
+  }
+
+  .input-main {
+    width: 100%;
+    font-size: 20px
+  }
+
+  .jobs {
+    padding: 0;
+  }
+
+  .job-item {
+    display: flex;
+    font-size: 13px;
+    align-items: center;
+    margin: 10px 0 10px 0;
+  }
+
+  .job-name {
+    margin-left: 16px;
+    flex: 1
+  }
+
+  .input-add-job {
+    margin-right: 12px;
+    width: 200px;
+    padding: 7px;
+    outline: none;
+  }
+
+  .btn {
+    width: 25%
+  }
+
+  .job-item.done {
+    text-decoration: line-through
+  }
+
+  .clear-jobs {
+    margin-top: 20px;
+  }
+
+  .title-sub {
+    padding-top: 32px
+  }
+
+  footer {
+    color: #999;
+    font-size: 13px;
+    text-align: center;
+    background: #000;
+    margin: 32px 0 0;
+    padding: 12px 12px;
+  }
+
+  /* @media(max-width: 640px) {
+    .form-title-main {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  } */
+</style>
+
+<body>
+  <div class="container">
+
+    <h1 class="title-main">新拖延運動 の To-do List</h1>
+    <input type="text" class="input-add-job" /><button class="btn add-job">新增一項負擔</button>
+
+    <ul class="jobs">
+      <li class="job-item"><input type="checkbox" class="checkbox" />
+        <div class="job-name">勾選左邊，完成我</div><button class="btn del-job">刪</button>
+      </li>
+      <li class="job-item"><input type="checkbox" class="checkbox" />
+        <div class="job-name">按右邊，把我刪除</div><button class="btn del-job">除</button>
+      </li>
+      <li class="job-item"><input type="checkbox" class="checkbox" />
+        <div class="job-name">鍵入 Enter 亦可新增</div><button class="btn del-job">: )</button>
+      </li>
+
+    </ul>
+
+    <div class="clear">
+      <button class="btn clear-jobs">清空</button>
+    </div>
+
+
+    <div class="title-sub">請勿透過表單送出您的密碼。</div>
+
+    <footer>© 2021 © Copyright. All rights Reserved.</footer>
+  </div>
+</body>
+
+<script src="app.js"></script>
+
+</html>
