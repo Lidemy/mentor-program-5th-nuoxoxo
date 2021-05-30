@@ -117,8 +117,7 @@ a {
     line-height: 2em;
     /* em 就是 font size */
     /* rem 是針對 body 的 font size */
-    margin: 0px 0px 68px 0px
-        /* margin: 上右下左 */
+    margin-bottom: 68px;
 }
 
 .button {

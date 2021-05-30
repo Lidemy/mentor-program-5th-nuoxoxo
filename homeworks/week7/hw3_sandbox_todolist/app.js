@@ -43,6 +43,9 @@ function addJobs() {
     li.classList.add("job-item")
     li.innerHTML = `<input type="checkbox" class="checkbox"/><div class="job-name">${value}</div><button class="btn del-job done">刪除</button>`
     jobs.appendChild(li)
+
+    // clear input box
+
     document.querySelector(".input-add-job").value = ""
 }
 
