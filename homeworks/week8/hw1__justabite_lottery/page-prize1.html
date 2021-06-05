@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Just a Bite!</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="wrapper">
+      <div class="navbar__site-name">
+        Just a Bite!
+      </div>
+      <ul class="navbar__list">
+        <li><a href="index.html">返回主頁</a></li>
+        <li class="active"><a href="page-lottery.html">抽個大獎</a></li>
+        <li><a href="#">我要點餐</a></li>
+        <li><a href="#">查詢訂單</a></li>
+        <li><a href="page-faq.html">常見問題</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="banner prize first">
+    <div class="prize__info">
+      
+      <h2 class="prize__info__title">恭喜你中頭獎了！日本東京來回雙人遊！</h2>
+
+      <div class="prize__pseudo__btn">請移玉步至領獎區</div>
+      
+      </div>
+    
+    </div>
+
+  </section>
+  
+  <footer>
+    <div class="footer__top">
+      <div class="wrapper">
+        <div class="footer__info">
+          <div>餐館地址: 天上地下天堂路三分之一里六段520號</div>
+          <div>訂位專線：02-1314-5566</div>
+          <div>營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+          <div>email：service@justabite.com.tw</div>
+        </div>
+
+        <div>
+          <div class="footer__site__title">Just a Bite!</div>
+          <div class="footer__site__links">
+            <a href="https://www.facebook.com">facebook</a> |
+            <a href="https://www.instagram.com">Instagram</a> |
+            <a href="https://www.youtube.com">Youtube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有</div>
+  </footer>
+</body>
+<script> document.querySelector(".prize__pseudo__btn").addEventListener("click", () => {
+  window.location.assign("index.html")
+  console.log("hi")
+})</script>
+</html>
