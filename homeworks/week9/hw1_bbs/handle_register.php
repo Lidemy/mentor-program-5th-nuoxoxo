@@ -15,7 +15,7 @@ $nickname = $_POST["nickname"];
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$sql_query = "INSERT INTO users (nickname, username, password) VALUES ('$nickname', '$username', '$password')";
+$sql_query = "INSERT INTO a_users (nickname, username, password) VALUES ('$nickname', '$username', '$password')";
 
 $result = $conn->query($sql_query);
 

@@ -6,6 +6,14 @@ body {
     background: #007f9d;
 }
 
+.warning {
+    background: #ffc4c6;
+    color: #a20606;
+    padding: 8px;
+    text-align: center;
+    font-size: 11px;
+}
+
 .board {
     border-top: solid 6px #fad312;
     background: white;

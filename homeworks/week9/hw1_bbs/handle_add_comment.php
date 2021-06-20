@@ -13,7 +13,7 @@ $nickname = $user["nickname"];
 $content = mysqli_real_escape_string($conn, $_POST["content"]);
 
 // Insert SQL
-$sql_query = "INSERT INTO bbs (nickname, content) VALUES ('$nickname', '$content')";
+$sql_query = "INSERT INTO a_bbs (nickname, content) VALUES ('$nickname', '$content')";
 
 $result = $conn->query($sql_query);
 if (!$result) {
