@@ -11,7 +11,7 @@ if (!empty($_SESSION["username"])) {
 }
 
 // Get bbs comment list
-$result = $conn->query("SELECT * FROM bbs ORDER BY created_at DESC");
+$result = $conn->query("SELECT * FROM a_bbs ORDER BY created_at DESC");
 if (!$result) {
   die("Error: " . $conn->error);
 }

@@ -6,7 +6,7 @@ require_once("conn.php");
 function getUserFromSession($username) {
   global $conn;
   $user_sql = $conn->query(
-    "SELECT * FROM users WHERE username = '$username'"
+    "SELECT * FROM a_users WHERE username = '$username'"
   );
   $user = $user_sql->fetch_assoc();
   return $user;
