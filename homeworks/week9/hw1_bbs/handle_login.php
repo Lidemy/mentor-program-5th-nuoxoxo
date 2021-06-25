@@ -13,13 +13,9 @@ if (empty($_POST["username"]) || empty($_POST["password"])) {
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-<<<<<<< HEAD
 // $sql_login = "SELECT * FROM users WHERE username =  '$username' AND password = '$password'";
 $sql_login = "SELECT * FROM a_users WHERE username =  '$username'";
 
-=======
-$sql_login = "SELECT * FROM a_users WHERE username =  '$username' AND password = '$password'";
->>>>>>> 3a47f948bbc81039e59d6dd8405c9c6ebf1b2c08
 $result = $conn->query($sql_login);
 
 // check $result AND $result->num_rows
