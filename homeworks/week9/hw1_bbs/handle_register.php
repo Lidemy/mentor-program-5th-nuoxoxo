@@ -20,7 +20,6 @@ $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $sql_query = "INSERT INTO a_users (nickname, username, password) VALUES ('$nickname', '$username', '$password')";
 
 $result = $conn->query($sql_query);
-
 if (!$result) {
     $code = $conn->errno;
     echo "$code";
@@ -28,11 +27,11 @@ if (!$result) {
         $message = "帳戶已被註冊";
         echo "<script>window.location.href='register.php';alert('$message');</script>"; 
     }
-    die();
+    // die();
+    die($conn->error);
 }
 
 $_SESSION["username"] = $username;
-// header("Location: login.php"); 
 header("Location: index.php"); 
 
 ?>

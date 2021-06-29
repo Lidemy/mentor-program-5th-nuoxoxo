@@ -5,6 +5,8 @@ session_start();
 require_once("conn.php");
 require_once("utils.php");
 
+// 
+
 if (empty($_POST["username"]) || empty($_POST["password"])) {
     header("Location: login.php");
     die();
@@ -13,7 +15,6 @@ if (empty($_POST["username"]) || empty($_POST["password"])) {
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-// $sql_login = "SELECT * FROM users WHERE username =  '$username' AND password = '$password'";
 $sql_login = "SELECT * FROM a_users WHERE username =  '$username'";
 
 $result = $conn->query($sql_login);
@@ -29,7 +30,7 @@ if ($result->num_rows === 0) {
     echo "
     <script>window.location.href='login.php';
     alert('$message');
-    </script>"; // 不知如何跳轉的同時顯示 alert  
+    </script>";
     exit();
 }
 
