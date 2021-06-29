@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-
 require_once("conn.php");
 require_once("utils.php");
 
@@ -15,15 +14,16 @@ if (empty($_POST["username"]) || empty($_POST["password"])) {
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$sql_login = "SELECT * FROM a_users WHERE username =  '$username'";
-
-$result = $conn->query($sql_login);
-
-// check $result AND $result->num_rows
+$sql_login = "SELECT * FROM a_users WHERE username = ?";
+$stmt = $conn->prepare($sql_login);
+$stmt->bind_param("s", $username);
+$result = $stmt->execute();
 
 if (!$result) {
     die($conn->errno);
 }
+
+$result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
     $message = "帳號輸入錯誤";

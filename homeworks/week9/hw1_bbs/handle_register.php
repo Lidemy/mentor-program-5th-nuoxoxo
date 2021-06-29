@@ -14,12 +14,13 @@ if (
 
 $nickname = $_POST["nickname"];
 $username = $_POST["username"];
-// $password = $_POST["password"];
 $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-$sql_query = "INSERT INTO a_users (nickname, username, password) VALUES ('$nickname', '$username', '$password')";
+$sql_query = "INSERT INTO a_users (nickname, username, password) VALUES (?, ?, ?)";
+$stmt = $conn->prepare($sql_query);
+$stmt->bind_param("sss", $nickname, $username, $password);
+$result = $stmt->execute();
 
-$result = $conn->query($sql_query);
 if (!$result) {
     $code = $conn->errno;
     echo "$code";

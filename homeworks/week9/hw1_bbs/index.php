@@ -11,10 +11,17 @@ if (!empty($_SESSION["username"])) {
 }
 
 // Get bbs comment list
-$result = $conn->query("SELECT * FROM a_bbs ORDER BY created_at DESC");
+// $result = $conn->query("SELECT * FROM a_bbs ORDER BY created_at DESC");
+$sql_load = "SELECT * FROM a_bbs ORDER BY created_at DESC";
+$stmt = $conn->prepare($sql_load);
+$result = $stmt-> execute();
+
 if (!$result) {
   die("Error: " . $conn->error);
 }
+
+$result = $stmt->get_result();
+
 ?>
 
 <!DOCTYPE html>
@@ -55,11 +62,11 @@ if (!$result) {
         </div>
         <div class="card__body">
           <div class="card__info">
-            <span class="card__author"><?= $row["nickname"] ?></span>
+            <span class="card__author"><?= escape($row["nickname"])  ?></span>
             <span class="card__time"><?= $row["created_at"] ?></span>
           </div>
           <p class="card__content">
-            <?= $row["content"] ?>
+            <?= escape($row["content"]) ?>
           </p>
         </div>
       </div>

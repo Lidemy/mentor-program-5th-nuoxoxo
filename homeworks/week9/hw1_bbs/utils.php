@@ -21,4 +21,9 @@ function genToken() {
   return $str;
 }
 
+// text formatting
+function escape($str) {
+  return htmlspecialchars($str, ENT_QUOTES);
+}
+
 ?>
