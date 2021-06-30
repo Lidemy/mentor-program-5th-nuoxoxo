@@ -3,15 +3,12 @@ session_start();
 require_once("conn.php");
 require_once("utils.php");
 
-// Get user
 $username = NULL;
 if (!empty($_SESSION["username"])) {
   $username = $_SESSION["username"];
   $user = getUserFromSession($username);
 }
 
-// Get bbs comment list
-// $result = $conn->query("SELECT * FROM a_bbs ORDER BY created_at DESC");
 $sql_load = "SELECT * FROM a_bbs ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql_load);
 $result = $stmt-> execute();
@@ -40,7 +37,15 @@ $result = $stmt->get_result();
         <a href="login.php" class="board__btn">登入</a>
       <?php } else { ?>
         <a href="handle_logout.php" class="board__btn">登出</a>
-        <h4 style="margin:12px 0 12px 0;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?php echo strtoupper($user["nickname"]
+        <span class="board__btn update-nickname noselect">改名</span>
+        <form method="POST" action="update_user.php" class="hide board__nickname-form board__new-comment-form">
+          <div class="board__nickname" style="display: inline-block;">
+            <span>新的暱稱：</span>
+            <input type="text" name="nickname" />
+          </div>
+          <input class="update-nickname-btn" type="submit" value="確認" />
+        </form>
+        <h4 style="margin:12px 0 12px 0;font-weight:normal;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?php echo strtoupper($user["nickname"]
       ); ?></p> ！</h4>
       <?php } ?>
     </div>
@@ -49,7 +54,7 @@ $result = $stmt->get_result();
         <textarea id="content" name="content" rows="4" placeholder="您的留言" autocomplete="off"></textarea>
       </div>
       <?php if ($username) { ?>
-        <input class="board__submit-btn" type="submit" value="提交" onClick="return isEmpty()"/>
+        <input class="board__submit-btn" type="submit" value="發表" onClick="return isEmpty()"/>
       <?php } else { ?>
         <h3>請登入發布留言</h3>
       <?php } ?>
@@ -75,6 +80,15 @@ $result = $stmt->get_result();
   </main>
 </body>
 <script>
+var btn = document.querySelector(".update-nickname")
+
+if (btn !== null) {
+  btn.addEventListener("click", function() {
+    var form = document.querySelector(".board__nickname-form")
+    form.classList.toggle("hide")
+  })
+}
+
 function isEmpty() {
   if (!document.getElementById("content").value) {
     alert("留言內容為空白");

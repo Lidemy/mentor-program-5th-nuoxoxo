@@ -25,10 +25,10 @@ body {
 
 .board__btn {
     display: inline-block;
+    cursor: pointer;
     text-decoration: none;
     font-size: 12px;
     text-align: center;
-    /* padding: 10px; */
     border: 1px solid #c2dffb;
     border-radius: 5px;
     width: 64px;
@@ -45,6 +45,7 @@ body {
 }
 
 .board__nickname {
+    
     margin-bottom: 16px;
 }
 
@@ -55,13 +56,26 @@ body {
 
 .board__submit-btn {
     padding: 10px;
-    border: 1px solid #c2dffb;
     border-radius: 5px;
+    border: 1px solid #c2dffb;
     width: 100px;
-    color: #583c63;
     font-size: 16px;
+    color: #5c9edc;
     background: white;
+    cursor: pointer;
 }
+
+.update-nickname-btn {
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid #c2dffb; 
+    width: 50px;
+    color: #5c9edc;
+    background: white;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 
 .board__hr {
     margin: 32px auto;
@@ -101,4 +115,18 @@ body {
 
 .card__time {
     color: #a0a0a0;
+}
+
+.board__nickname-form {
+    margin: 12px 0px 12px 0px;
+}
+
+.hide {
+    display: none;
+}
+
+.noselect {
+    user-select: none; 
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
 }
