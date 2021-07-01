@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once("conn.php");
 require_once("utils.php");
@@ -9,7 +10,8 @@ if (!empty($_SESSION["username"])) {
   $user = getUserFromSession($username);
 }
 
-$sql_load = "SELECT * FROM a_bbs ORDER BY created_at DESC";
+// $sql_load = "SELECT * FROM a_bbs ORDER BY created_at DESC";
+$sql_load = "SELECT bbs.content as content, bbs.created_at as created_at, users.nickname as nickname, users.username as username FROM a_bbs as bbs LEFT JOIN a_users AS users on bbs.username = users.username ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql_load);
 $result = $stmt-> execute();
 
@@ -59,7 +61,7 @@ $result = $stmt->get_result();
         <h3>請登入發布留言</h3>
       <?php } ?>
     </form>
-    <div class="board__hr"></div>
+    <div class="hr"></div>
     <section>
       <?php while ($row = $result->fetch_assoc()) { ?>
       <div class="card">
@@ -67,8 +69,11 @@ $result = $stmt->get_result();
         </div>
         <div class="card__body">
           <div class="card__info">
-            <span class="card__author"><?= escape($row["nickname"])  ?></span>
-            <span class="card__time"><?= $row["created_at"] ?></span>
+            <span class="card__author">
+              <?= escape($row["nickname"])  ?>
+              (@<?= escape($row["username"]) ?>)
+            </span>
+            <span class="card__time"><?= escape($row["created_at"]) ?></span>
           </div>
           <p class="card__content">
             <?= escape($row["content"]) ?>
@@ -81,11 +86,10 @@ $result = $stmt->get_result();
 </body>
 <script>
 var btn = document.querySelector(".update-nickname")
-
 if (btn !== null) {
   btn.addEventListener("click", function() {
-    var form = document.querySelector(".board__nickname-form")
-    form.classList.toggle("hide")
+  var form = document.querySelector(".board__nickname-form")
+  form.classList.toggle("hide")
   })
 }
 

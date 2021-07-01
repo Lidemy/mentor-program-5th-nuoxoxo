@@ -14,6 +14,12 @@ body {
     font-size: 11px;
 }
 
+.hr {
+    margin: 32px auto;
+    height: 2px;
+    background: #e8e8e8;
+}
+
 .board {
     border-top: solid 6px #fad312;
     background: white;
@@ -45,7 +51,6 @@ body {
 }
 
 .board__nickname {
-    
     margin-bottom: 16px;
 }
 
@@ -74,13 +79,6 @@ body {
     background: white;
     margin-left: 5px;
     cursor: pointer;
-}
-
-
-.board__hr {
-    margin: 32px auto;
-    height: 2px;
-    background: #e8e8e8;
 }
 
 .card {
