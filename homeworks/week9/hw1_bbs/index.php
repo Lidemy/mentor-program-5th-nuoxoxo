@@ -10,8 +10,7 @@ if (!empty($_SESSION["username"])) {
   $user = getUserFromSession($username);
 }
 
-// $sql_load = "SELECT * FROM a_bbs ORDER BY created_at DESC";
-$sql_load = "SELECT bbs.content as content, bbs.created_at as created_at, users.nickname as nickname, users.username as username FROM a_bbs as bbs LEFT JOIN a_users AS users on bbs.username = users.username ORDER BY created_at DESC";
+$sql_load = "SELECT bbs.id as id, bbs.content as content, bbs.created_at as created_at, users.nickname as nickname, users.username as username FROM a_bbs as bbs LEFT JOIN a_users AS users on bbs.username = users.username ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql_load);
 $result = $stmt-> execute();
 
@@ -22,7 +21,6 @@ if (!$result) {
 $result = $stmt->get_result();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,15 +38,14 @@ $result = $stmt->get_result();
       <?php } else { ?>
         <a href="handle_logout.php" class="board__btn">登出</a>
         <span class="board__btn update-nickname noselect">改名</span>
-        <form method="POST" action="update_user.php" class="hide board__nickname-form board__new-comment-form">
+        <form id="form__update-user" method="POST" action="handle_update_user.php" class="hide board__nickname-form board__new-comment-form" value="update_nickname" >
           <div class="board__nickname" style="display: inline-block;">
             <span>新的暱稱：</span>
             <input type="text" name="nickname" />
           </div>
-          <input class="update-nickname-btn" type="submit" value="確認" />
+          <input class="update-nickname-btn" type="submit" value="確認"/>
         </form>
-        <h4 style="margin:12px 0 12px 0;font-weight:normal;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?php echo strtoupper($user["nickname"]
-      ); ?></p> ！</h4>
+        <h4 style="margin:12px 0 12px 0;font-weight:normal;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?php echo strtoupper($user["nickname"]); ?></p> ！</h4>
       <?php } ?>
     </div>
     <form class="board__new-comment-form" method="POST" action="handle_add_comment.php">
@@ -56,7 +53,7 @@ $result = $stmt->get_result();
         <textarea id="content" name="content" rows="4" placeholder="您的留言" autocomplete="off"></textarea>
       </div>
       <?php if ($username) { ?>
-        <input class="board__submit-btn" type="submit" value="發表" onClick="return isEmpty()"/>
+        <input class="board__submit-btn" type="submit" value="發表"/>
       <?php } else { ?>
         <h3>請登入發布留言</h3>
       <?php } ?>
@@ -74,30 +71,36 @@ $result = $stmt->get_result();
               (@<?= escape($row["username"]) ?>)
             </span>
             <span class="card__time"><?= escape($row["created_at"]) ?></span>
+
+            
+            
+            <!-- REPLY -->
+            <span class="card__author noselect" style="margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer">回覆</span>
+            
+            <!-- EDIT -->
+            <?php if ($row["username"] === $username) { ?>
+            <a class="card__author update-comment noselect" style="margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer">編輯</a>
+            <!-- <a class="card__author delete-comment noselect" method="POST" href="handle_del_comment.php" style="margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer">刪除</a> -->
+            <? } ?>
           </div>
-          <p class="card__content">
-            <?= escape($row["content"]) ?>
-          </p>
+          
+          <p class="card__content"><?= escape($row["content"]) ?></p>
+
+          <!-- EDIT -->
+          <form id="form__update-comment" method="POST" action="handle_update_comment.php" class="hide /*board__new-comment-form*/">
+            <div class="board__nickname" style="margin-bottom:0px;">
+              <textarea name="updated_comment" rows="4" autocomplete="off"><?= escape($row["content"]) ?></textarea>
+              <textarea name="id" style="display:none"><?= $row["id"]; ?></textarea>
+            </div>
+            <!-- "Bring" a variable to another php page -->
+            <input class="update-comment-btn" type="submit" value="提交" />
+          </form>
+
         </div>
       </div>
       <?php } ?>
     </section>
   </main>
 </body>
-<script>
-var btn = document.querySelector(".update-nickname")
-if (btn !== null) {
-  btn.addEventListener("click", function() {
-  var form = document.querySelector(".board__nickname-form")
-  form.classList.toggle("hide")
-  })
-}
-
-function isEmpty() {
-  if (!document.getElementById("content").value) {
-    alert("留言內容為空白");
-    return false;
-  }
-}
-</script>
+<script type="text/javascript" src="utils.js"></script>
 </html>

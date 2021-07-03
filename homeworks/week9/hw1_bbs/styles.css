@@ -3,7 +3,7 @@
 }
 
 body {
-    background: #007f9d;
+    background: #007f9d; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .warning {
@@ -44,8 +44,19 @@ body {
 }
 
 .board__new-comment-form textarea {
-    margin-bottom: 16px;
     width: 100%;
+    max-width: 100%;
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #c2dffb;
+}
+
+.board__nickname textarea {
+    width: 100%;
+    /* max-width: 100%; */
+    max-width: 320px;
+    max-height: 320px;
+    margin-bottom: 16px;
     padding: 10px;
     border: 1px solid #c2dffb;
 }
@@ -127,4 +138,14 @@ body {
     user-select: none; 
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 
+}
+
+.update-comment-btn {
+    border-radius: 5px;
+    border: 1px solid #c2dffb; 
+    width: 50px;
+    color: #5c9edc;
+    background: white;
+    /* margin-left:0;padding:0; */
+    cursor: pointer;
 }
