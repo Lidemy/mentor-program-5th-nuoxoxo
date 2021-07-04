@@ -10,20 +10,8 @@ if (!empty($_SESSION["username"])) {
   $user = getUserFromSession($username);
 }
 
-$sql_load = "SELECT bbs.id as id, bbs.content as content, bbs.created_at as created_at, bbs.is_deleted as is_deleted, users.nickname as nickname, users.username as username FROM a_bbs as bbs LEFT JOIN a_users AS users on bbs.username = users.username WHERE is_deleted IS NULL ORDER BY created_at DESC LIMIT ? OFFSET ? ";
-
-// Pagination update:
-
-if ((empty($_GET["page"])) or $_GET["page"] == 0){
-  $page = 1;
-} else {
-  $page = $_GET["page"];
-}
-$limit = 5;
-$offset = ($page - 1) * $limit;
-
+$sql_load = "SELECT bbs.id as id, bbs.content as content, bbs.created_at as created_at, bbs.is_deleted as is_deleted, users.nickname as nickname, users.username as username FROM a_bbs as bbs LEFT JOIN a_users AS users on bbs.username = users.username WHERE is_deleted IS NULL ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql_load);
-$stmt->bind_param("ii", $limit, $offset);
 $result = $stmt-> execute();
 
 if (!$result) {
@@ -70,9 +58,7 @@ $result = $stmt->get_result();
         <h3>請登入發布留言</h3>
       <?php } ?>
     </form>
-
     <div class="hr"></div>
-    
     <section>
       <?php while ($row = $result->fetch_assoc()) { ?>
       <div class="card">
@@ -108,45 +94,6 @@ $result = $stmt->get_result();
       </div>
       <?php } ?>
     </section>
-    
-    <div class="hr"></div>
-
-    <!-- Pagination update: -->
-    <?php 
-
-    $sql_info = "SELECT COUNT(id) as count FROM a_bbs WHERE is_deleted IS NULL";
-
-    $stmt = $conn->prepare($sql_info);
-    $result = $stmt->execute();
-    if (!$result) {die("Error: " . $conn->error);}
-    
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $count = $row["count"];
-    
-    $page_total = ceil($count / $limit);
-  
-    ?>
-    <div class="page">
-      <div class="pagecount">
-        <span>共 <?php echo $count ?> 條留言</span><br>
-        <span>頁數：<?php echo $page ?> / <?php echo $page_total ?></span>
-      </div>
-      <div class="pagination">
-        <?php if ($page == 1 or $page == 0) { ?>
-          <a href="index.php?page=<?php echo $page + 1 ?>" class="page-btn">下一頁</a>
-        <?php } else if ($page < $page_total and $page > 1) { ?>
-          <a href="index.php" class="page-btn">回到首頁</a>
-          <a href="index.php?page=<?php echo $page - 1 ?>" class="page-btn">上一頁</a>
-          <a href="index.php?page=<?php echo $page + 1 ?>" class="page-btn">下一頁</a>
-          <a href="index.php?page=<?php echo $page_total ?>" class="page-btn">最後一頁</a>
-        <?php } else if ($page == $page_total) { ?>
-          <a href="index.php" class="page-btn">回到首頁</a>
-          <a href="index.php?page=<?php echo $page - 1 ?>" class="page-btn">上一頁</a>
-        <?php } ?>
-      </div>
-    </div>
-
   </main>
 </body>
 <script type="text/javascript" src="utils.js"></script>
