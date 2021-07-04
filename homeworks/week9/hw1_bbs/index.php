@@ -10,7 +10,7 @@ if (!empty($_SESSION["username"])) {
   $user = getUserFromSession($username);
 }
 
-$sql_load = "SELECT bbs.id as id, bbs.content as content, bbs.created_at as created_at, users.nickname as nickname, users.username as username FROM a_bbs as bbs LEFT JOIN a_users AS users on bbs.username = users.username ORDER BY created_at DESC";
+$sql_load = "SELECT bbs.id as id, bbs.content as content, bbs.created_at as created_at, bbs.is_deleted as is_deleted, users.nickname as nickname, users.username as username FROM a_bbs as bbs LEFT JOIN a_users AS users on bbs.username = users.username WHERE is_deleted IS NULL ORDER BY created_at DESC";
 $stmt = $conn->prepare($sql_load);
 $result = $stmt-> execute();
 
@@ -72,27 +72,21 @@ $result = $stmt->get_result();
             </span>
             <span class="card__time"><?= escape($row["created_at"]) ?></span>
 
-            
-            
-            <!-- REPLY -->
-            <span class="card__author noselect" style="margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer">回覆</span>
-            
-            <!-- EDIT -->
+            <a class="card__author reply-comment edit-btn noselect" >回覆</a>
             <?php if ($row["username"] === $username) { ?>
-            <a class="card__author update-comment noselect" style="margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer">編輯</a>
-            <!-- <a class="card__author delete-comment noselect" method="POST" href="handle_del_comment.php" style="margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer">刪除</a> -->
+            <a class="card__author update-comment edit-btn noselect" >編輯</a>
+            <a class="card__author delete-comment edit-btn noselect" method="POST" href="handle_del_comment.php?id=<?php echo $row['id'] ?>">刪除</a>
             <? } ?>
           </div>
           
           <p class="card__content"><?= escape($row["content"]) ?></p>
 
           <!-- EDIT -->
-          <form id="form__update-comment" method="POST" action="handle_update_comment.php" class="hide /*board__new-comment-form*/">
+          <form id="form__update-comment" method="POST" action="handle_update_comment.php?id=<?php echo $row['id'] ?>" class="hide /*board__new-comment-form*/">
             <div class="board__nickname" style="margin-bottom:0px;">
               <textarea name="updated_comment" rows="4" autocomplete="off"><?= escape($row["content"]) ?></textarea>
-              <textarea name="id" style="display:none"><?= $row["id"]; ?></textarea>
+              <!-- <textarea name="id" style="display:none"><?= $row["id"]; ?></textarea> -->
             </div>
-            <!-- "Bring" a variable to another php page -->
             <input class="update-comment-btn" type="submit" value="提交" />
           </form>
 

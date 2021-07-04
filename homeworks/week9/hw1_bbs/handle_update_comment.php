@@ -9,7 +9,8 @@ if (empty($_POST["updated_comment"])) {
     die();
 }
 
-$id = $_POST["id"];
+// $id = $_POST["id"];
+$id = $_GET["id"];
 $content = $_POST["updated_comment"];
 
 $sql_update = "UPDATE a_bbs SET content = ? WHERE id = ?";

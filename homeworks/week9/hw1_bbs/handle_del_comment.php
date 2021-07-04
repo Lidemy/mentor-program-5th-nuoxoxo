@@ -1,21 +1,21 @@
-<!-- <?php
+<?php
 
 session_start();
 require_once("conn.php");
 require_once("utils.php");
 
-if (empty($_POST["updated_comment"])) {
+if (empty($_GET["id"])) {
     header("Location: index.php");
     die();
 }
 
-$id = $_POST["id"];
+$id = $_GET["id"];
 $content = $_POST["updated_comment"];
 
-$sql_update = "UPDATE a_bbs SET content = ? WHERE id = ?";
+$sql_update = "UPDATE a_bbs SET is_deleted = 1 WHERE id = ?";
 
 $stmt = $conn->prepare($sql_update);
-$stmt->bind_param("si", $content, $id);
+$stmt->bind_param("i", $id);
 $result = $stmt->execute();
 
 if (!$result) {
@@ -24,4 +24,4 @@ if (!$result) {
 
 header("Location: index.php");
 
-?> -->
+?>

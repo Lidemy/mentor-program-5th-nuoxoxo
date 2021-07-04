@@ -149,3 +149,8 @@ body {
     /* margin-left:0;padding:0; */
     cursor: pointer;
 }
+
+.edit-btn {
+    margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer
+}
+
