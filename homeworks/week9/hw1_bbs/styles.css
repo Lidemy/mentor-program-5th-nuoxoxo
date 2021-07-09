@@ -43,9 +43,11 @@ body {
     margin: 0px 8px 16px 0px;
 }
 
-.board__new-comment-form textarea {
+.board__content textarea {
+    resize: vertical;
     width: 100%;
     max-width: 100%;
+    min-height: 60px;
     margin-bottom: 16px;
     padding: 10px;
     border: 1px solid #c2dffb;
@@ -53,7 +55,6 @@ body {
 
 .board__nickname textarea {
     width: 100%;
-    /* max-width: 100%; */
     max-width: 320px;
     max-height: 320px;
     margin-bottom: 16px;
@@ -151,11 +152,12 @@ body {
 }
 
 .edit-btn {
-    margin-left:3px;text-decoration:none;font-weight:normal;cursor:pointer
+    margin-left:3px;text-decoration:none;font-weight:normal;color:#5c9edc;cursor:pointer
 }
 
 .page {
     margin-left: 12px;
+    text-align: right;
 }
 
 .pagination {
@@ -166,4 +168,33 @@ body {
     color: #5c9edc;
     margin-right: 3px;
     text-decoration:none;font-weight:normal;cursor:pointer
+}
+
+.disabled-btn {
+    margin-left:3px;
+    text-decoration:none;
+    font-weight:normal;
+    color: #808080;
+}
+
+.admin-table {
+    border-collapse: collapse;
+  width: 100%;
+}
+
+.admin-table td, .admin-table th {
+    text-align:center;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.admin-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.admin-table tr:hover {background-color: #ddf;}
+
+.admin-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #04AA6D;
+  color: white;
 }

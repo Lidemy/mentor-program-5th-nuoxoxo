@@ -9,7 +9,6 @@ if (empty($_POST["updated_comment"])) {
     die();
 }
 
-// $id = $_POST["id"];
 $id = $_GET["id"];
 $content = $_POST["updated_comment"];
 
