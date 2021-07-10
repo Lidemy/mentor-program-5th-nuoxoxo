@@ -287,7 +287,7 @@ NPSC 中文全名為[網際網路程式設計全國大賽](https://contest.cc.nt
 
 [HW5 作業連結](/homeworks/week5)
 
--->
+
 
 ### 第六週（05/17 ~ 05/23）：前端基礎 HTML 與 CSS
 
@@ -433,6 +433,8 @@ HTML 的部分會簡單介紹幾個常見的 tag，以及 head 的一些屬性�
 一共十關，看你能闖到第幾關：[r3:0 異世界網站挑戰](https://r30challenge.herokuapp.com/)（特別感謝第三期 @minw 製作遊戲）。
 
 [HW10 作業連結](/homeworks/week10)
+
+-->
 
 ### 第十一週（06/21 ~ 06/27）：資訊安全
 
