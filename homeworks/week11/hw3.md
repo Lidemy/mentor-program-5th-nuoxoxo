@@ -4,6 +4,8 @@
 
 就算擁有 hash function 黑客也只能套出密碼的部分信息，剩下的只能靠猜。目前 SSL 認證的算法標準是 SHA-2 和 SHA-256 ，在此基礎上還有進一步加入隨機數字、使 hash 結果更複雜的技巧，稱為「加鹽(salting)」
 
+&nbsp;
+
 ## include、require、include_once、require_once 的差別
 
 它們大致上都是「讀取並使用」一個對象的意思
@@ -36,6 +38,8 @@ require "utils.php";
 include_once "template_header.php";
 ```
 
+&nbsp;
+
 ## SQL Injection 的攻擊原理以及防範方法
 
 信息傳遞其實是文本的傳遞。SQL Injection 之所以可行是因為 SQL 所用的 statement 也是文本，當用戶的 input 是數據庫敏感的字串，SQL 收到這樣的文本後就有可能照辦煮碗地執行。例如駕車人士為了對付超速監控攝像，在車頭掛出印有「`DROP TABLE ...`」的橫幅
@@ -43,6 +47,8 @@ include_once "template_header.php";
 防範措施是在所有收集 SQL stmt 的地方執行輸入認證 (input validation)
 
 輸入認證有很多種，例如用 WAF 也可以自己手寫 `->prepare` 總之目的都是為了「清洗」 SQL 命令中的惡意/非法字元字串的，
+
+&nbsp;
 
 ## XSS 的攻擊原理以及防範方法
 
@@ -53,6 +59,8 @@ XSS，Cross-site scripting 顧名思義是「將(惡意)腳本扔給對方並造
 基礎的防範方法有兩種：一，用輸入認證，像對付 SQL Injection 那樣檢驗和「清洗」input ；二，投放到 html 之前，把 output 進行特定格式的 encoding
 
 對付從 response headers 帶來的惡意腳本，可以使用 Content-Type 或 X-Content-Type-Options 來確保 header 中不含 js 腳本和 html 內容
+
+&nbsp;
 
 ## CSRF 的攻擊原理以及防範方法
 
