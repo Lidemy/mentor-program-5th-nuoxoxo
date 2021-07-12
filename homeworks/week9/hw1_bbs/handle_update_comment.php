@@ -16,6 +16,7 @@ $sql_update = "UPDATE a_bbs SET content = ? WHERE id = ?";
 
 $stmt = $conn->prepare($sql_update);
 $stmt->bind_param("si", $content, $id);
+// $stmt->bind_param(”sis“, $content, $id, $username);
 $result = $stmt->execute();
 
 if (!$result) {

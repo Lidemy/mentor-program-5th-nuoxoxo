@@ -11,7 +11,7 @@ if (!empty($_SESSION["username"])) {
   $user = getUserFromSession($username);
 }
 
-if ((empty($_GET["page"])) or $_GET["page"] == 0){
+if ((empty($_GET["page"])) || $_GET["page"] == 0){
   $page = 1;
 } else {
   $page = $_GET["page"];
@@ -70,7 +70,7 @@ $result = $stmt->get_result();
           </div>
           <input class="update-nickname-btn" type="submit" value="確認"/>
         </form>
-        <h4 style="margin:12px 0 12px 0;font-weight:normal;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?= $user["nickname"]; ?></p> ！</h4>
+        <h4 style="margin:12px 0 12px 0;font-weight:normal;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?= escape($user["nickname"]); ?></p> ！</h4>
       <?}?>
     </div>
     <form class="board__new-comment-form" method="POST" action="handle_add_comment.php">
@@ -114,12 +114,12 @@ $result = $stmt->get_result();
                 <a class="disabled-btn ">刪除</a>
               <?} else {?>
               <a class="update-comment edit-btn ">編輯</a>
-              <a class="delete-comment edit-btn " method="POST" href="handle_del_comment.php?id=<?= $row['id'] ?>">刪除</a>
+              <a class="delete-comment edit-btn " method="POST" href="handle_del_comment.php?id=<?= escape($row['id']) ?>">刪除</a>
               <? } 
             } ?>
           </div>          
           <p class="card__content"><?= escape($row["content"]) ?></p>
-          <form id="form__update-comment" method="POST" action="handle_update_comment.php?id=<?= $row['id'] ?>" class="hide /*board__new-comment-form*/">
+          <form id="form__update-comment" method="POST" action="handle_update_comment.php?id=<?= escape($row['id']) ?>" class="hide /*board__new-comment-form*/">
             <div class="board__nickname" style="margin-bottom:0px;">
               <textarea name="updated_comment" rows="4" autocomplete="off"><?= escape($row["content"]) ?></textarea>
             </div>
@@ -149,20 +149,20 @@ $result = $stmt->get_result();
 
     <div class="page">
       <div class="pagecount">
-        <span>共 <?= $count ?> 條留言</span><br>
-        <span>頁數：<?= $page ?> / <?= $page_total ?></span>
+        <span>共 <?= escape($count) ?> 條留言</span><br>
+        <span>頁數：<?= escape($page) ?> / <?= escape($page_total) ?></span>
       </div>
       <div class="pagination">
-        <?php if ($page == 1 or $page == 0) { ?>
-          <a href="index.php?page=<?= $page + 1 ?>" class="page-btn">下一頁</a>
+        <?php if ($page == 1 || $page == 0) { ?>
+          <a href="index.php?page=<?= escape($page) + 1 ?>" class="page-btn">下一頁</a>
         <? } else if ($page < $page_total and $page > 1) { ?>
           <a href="index.php" class="page-btn">回到首頁</a>
-          <a href="index.php?page=<?= $page - 1 ?>" class="page-btn">上一頁</a>
-          <a href="index.php?page=<?= $page + 1 ?>" class="page-btn">下一頁</a>
-          <a href="index.php?page=<?= $page_total ?>" class="page-btn">最後一頁</a>
+          <a href="index.php?page=<?= escape($page) - 1 ?>" class="page-btn">上一頁</a>
+          <a href="index.php?page=<?= escape($page) + 1 ?>" class="page-btn">下一頁</a>
+          <a href="index.php?page=<?= escape($page_total) ?>" class="page-btn">最後一頁</a>
         <? } else if ($page == $page_total) { ?>
           <a href="index.php" class="page-btn">回到首頁</a>
-          <a href="index.php?page=<?= $page - 1 ?>" class="page-btn">上一頁</a>
+          <a href="index.php?page=<?= escape($page) - 1 ?>" class="page-btn">上一頁</a>
         <? } else if ($page > $page_total) { header("Location: index.php"); } ?>
       </div>
     </div>
