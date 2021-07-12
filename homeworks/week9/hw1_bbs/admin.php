@@ -12,11 +12,11 @@ if (!empty($_SESSION["username"])) {
 }
 
 if ($user["role"] !== "ADMIN") {
-  header("Location: admin.php");
+  header("Location: index.php");
   exit;
 }
 
-if ((empty($_GET["page"])) or $_GET["page"] == 0){
+if ((empty($_GET["page"])) || $_GET["page"] == 0){
   $page = 1;
 } else {
   $page = $_GET["page"];
@@ -66,7 +66,7 @@ $result = $stmt->get_result();
           </div>
           <input class="update-nickname-btn" type="submit" value="確認"/>
         </form>
-        <h4 style="margin:12px 0 12px 0;font-weight:normal;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?= $user["nickname"]; ?></p> ！</h4>
+        <h4 style="margin:12px 0 12px 0;font-weight:normal;">歡迎回來，<p style="display:inline;color:#5c9edc;"><?=escape($user["nickname"])?></p> ！</h4>
       <? } ?>
     </div>
 
@@ -83,24 +83,24 @@ $result = $stmt->get_result();
         </tr>
         <?php while($row = $result->fetch_assoc()){ ?>
         <tr>
-          <td><? echo escape($row["id"]) ?></td>
+          <td><?=escape($row["id"]) ?></td>
           <?if ($row["role"] === "BANNED") {?>
-            <td style="color:red"><? echo escape($row["role"]) ?></td> 
+            <td style="color:red"><?=escape($row["role"]) ?></td> 
           <?} else if ($row["role"] === "ADMIN") {
             if ($row["username"] === $username) {?>
-            <td style="color:#04AA6D"><? echo "你本人" ?></td>
+            <td style="color:#04AA6D">你本人</td>
             <?}else {?>
-            <td style="color:#04AA6D"><? echo escape($row["role"]) ?></td> 
+            <td style="color:#04AA6D"><?=escape($row["role"]) ?></td> 
             <?}
           } else {?>
-            <td><? echo escape($row["role"]) ?></td>
+            <td><?=escape($row["role"]) ?></td>
           <?}?>
-          <td><? echo escape($row["nickname"]) ?></td>
-          <td><? echo escape($row["username"]) ?></td>
+          <td><?=escape($row["nickname"]) ?></td>
+          <td><?=escape($row["username"]) ?></td>
           <td>
-            <a class="edit-btn" href="handle_update_role.php?role=ADMIN&id=<?echo escape($row['id']);?>">管理者</a> / 
-            <a class="edit-btn" href="handle_update_role.php?role=NORMAL&id=<?echo escape($row['id']);?>">一般人</a> / 
-            <a class="edit-btn" href="handle_update_role.php?role=BANNED&id=<?echo escape($row['id']);?>">停權</a>
+            <a class="edit-btn" href="handle_update_role.php?role=ADMIN&id=<?=escape($row['id']);?>">管理者</a> / 
+            <a class="edit-btn" href="handle_update_role.php?role=NORMAL&id=<?=escape($row['id']);?>">一般人</a> / 
+            <a class="edit-btn" href="handle_update_role.php?role=BANNED&id=<?=escape($row['id']);?>">停權</a>
           </td>
         </tr>
       <?}?>
@@ -125,21 +125,20 @@ $result = $stmt->get_result();
 
     <div class="page">
       <div class="pagecount">
-        <span>共 <?= $count ?> 個用戶</span><br>
+        <span>共 <?= escape($count) ?> 個用戶</span><br>
         <span>頁數：<?= $page ?> / <?= $page_total ?></span>
       </div>
       <div class="pagination">
-        <?php if ($page == 1 or $page == 0) { ?>
-          <a href="admin.php?page=<?= $page + 1 ?>" class="page-btn">下一頁</a>
+        <?php if ($page == 1 || $page == 0) { ?>
+          <a href="admin.php?page=<?= escape($page) + 1 ?>" class="page-btn">下一頁</a>
         <? } else if ($page < $page_total and $page > 1) { ?>
           <a href="admin.php" class="page-btn">回到首頁</a>
-          <a href="admin.php?page=<?= $page - 1 ?>" class="page-btn">上一頁</a>
-          <a href="admin.php?page=<?= $page + 1 ?>" class="page-btn">下一頁</a>
-          
-          <a href="admin.php?page=<?= $page_total ?>" class="page-btn">最後一頁</a>
+          <a href="admin.php?page=<?= escape($page) - 1 ?>" class="page-btn">上一頁</a>
+          <a href="admin.php?page=<?= escape($page) + 1 ?>" class="page-btn">下一頁</a>
+          <a href="admin.php?page=<?= escape($page_total) ?>" class="page-btn">最後一頁</a>
         <? } else if ($page == $page_total) { ?>
           <a href="admin.php" class="page-btn">回到首頁</a>
-          <a href="admin.php?page=<?= $page - 1 ?>" class="page-btn">上一頁</a>
+          <a href="admin.php?page=<?= escape($page) - 1 ?>" class="page-btn">上一頁</a>
         <? } else if ($page > $page_total) { header("Location: admin.php"); } ?>
       </div>
     </div>

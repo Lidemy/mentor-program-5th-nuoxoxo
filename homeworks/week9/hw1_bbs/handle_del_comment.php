@@ -10,7 +10,6 @@ if (empty($_GET["id"])) {
 }
 
 $id = $_GET["id"];
-$content = $_POST["updated_comment"];
 
 $sql_update = "UPDATE a_bbs SET is_deleted = 1 WHERE id = ?";
 
