@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #007f9d; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.warning {
+    background: #ffc4c6;
+    color: #a20606;
+    padding: 8px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.hr {
+    margin: 24px auto;
+    height: 2px;
+    background: #e8e8e8;
+}
+
+.board {
+    border-top: solid 6px #fad312;
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+}
+
+.board__btn {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #c2dffb;
+    border-radius: 5px;
+    width: 64px;
+    color: #000;
+    background: white;
+    margin: 0px 8px 16px 0px;
+}
+
+.board__content textarea {
+    resize: vertical;
+    width: 100%;
+    max-width: 100%;
+    min-height: 60px;
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #c2dffb;
+}
+
+.board__nickname textarea {
+    width: 100%;
+    max-width: 320px;
+    max-height: 320px;
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #c2dffb;
+}
+
+.board__nickname {
+    margin-bottom: 16px;
+}
+
+.board__nickname input {
+    border: 1px solid #c2dffb;
+    padding: 5px;
+}
+
+.board__submit-btn {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c2dffb;
+    width: 100px;
+    font-size: 16px;
+    color: #5c9edc;
+    background: white;
+    cursor: pointer;
+}
+
+.update-nickname-btn {
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid #c2dffb; 
+    width: 50px;
+    color: #5c9edc;
+    background: white;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.card {
+    margin: 12px 0;
+    min-height: 70px;
+    display: flex;
+}
+
+.card__avatar {
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e4f0fb;
+}
+
+.card__body {
+    margin-left: 10px;
+}
+
+.card__content {
+    margin-top: 8px;
+    max-width: 100%;
+    white-space: pre-line;
+    word-break: break-word;
+}
+
+.card__author {
+    color: #5c9edc;
+    font-weight: bold;
+}
+
+.card__time {
+    color: #a0a0a0;
+}
+
+.board__nickname-form {
+    margin: 12px 0px 12px 0px;
+}
+
+.hide {
+    display: none;
+}
+
+.noselect {
+    user-select: none; 
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+}
+
+.update-comment-btn {
+    border-radius: 5px;
+    border: 1px solid #c2dffb; 
+    width: 50px;
+    color: #5c9edc;
+    background: white;
+    /* margin-left:0;padding:0; */
+    cursor: pointer;
+}
+
+.edit-btn {
+    margin-left:3px;text-decoration:none;font-weight:normal;color:#5c9edc;cursor:pointer
+}
+
+.page {
+    margin-left: 12px;
+    text-align: right;
+}
+
+.pagination {
+    margin-top: 16px;
+}
+
+.page-btn {
+    color: #5c9edc;
+    margin-right: 3px;
+    text-decoration:none;font-weight:normal;cursor:pointer
+}
+
+.disabled-btn {
+    margin-left:3px;
+    text-decoration:none;
+    font-weight:normal;
+    color: #808080;
+}
+
+.admin-table {
+    border-collapse: collapse;
+  width: 100%;
+}
+
+.admin-table td, .admin-table th {
+    text-align:center;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.admin-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.admin-table tr:hover {background-color: #ddf;}
+
+.admin-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #04AA6D;
+  color: white;
+}
