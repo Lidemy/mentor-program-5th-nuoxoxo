@@ -1,7 +1,8 @@
 <?php 
 session_start();
-require_once("conn.php");
-require_once("utils.php");
+
+require_once "conn.php";
+require_once "utils.php";
 
 $sql_load = 
 "SELECT blog.id as id,
@@ -35,28 +36,28 @@ $result = $stmt->get_result();
 </head>
 
 <body>
-  <?php include_once("template_header.php") ?>
+  <?php include_once "template_header.php" ?>
   <div class="container-wrapper">
     <div class="posts">
       <?php while ($row = $result->fetch_assoc()) { ?>
       <article class="post">
         <div class="post__header">
-          <div><?=$row["title"]?></div>
+          <div><?=escape($row["title"])?></div>
           <? if (!empty($_SESSION["username"])) { ?>
             <div class="post__actions">
-              <a class="post__action" href="edit.php?id=<?=$row["id"]?>">編輯</a>
+              <a class="post__action" href="edit.php?id=<?=escape($row["id"])?>">編輯</a>
             </div>
           <?}?>
         </div>
-        <div class="post__info"><?=$row["created_at"]?></div>
-        <div class="post__content"><?=$row["content"]?>
+        <div class="post__info"><?=escape($row["created_at"])?></div>
+        <div class="post__content"><?=escape($row["content"])?>
         </div>
-        <a class="btn-read-more" method="POST" href="post.php?id=<?=$row["id"]?>">READ MORE</a>
+        <a class="btn-read-more" method="POST" href="post.php?id=<?=escape($row["id"])?>">READ MORE</a>
       </article>
       <?}?>
     </div>
   </div>
-  <?php include("template_footer.php") ?>
+  <?php include_once "template_footer.php" ?>
 </body>
 
 </html>

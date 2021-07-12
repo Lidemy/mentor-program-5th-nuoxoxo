@@ -1,8 +1,9 @@
 <?php
 session_start();
-require_once("conn.php");
-require_once("utils.php");
-require_once("handle_check_permission.php");
+
+require_once "conn.php";
+require_once "utils.php";
+require_once "handle_check_permission.php";
 
 $sql_load = 
 "SELECT id, title, content, created_at
@@ -30,7 +31,7 @@ $result = $stmt->get_result();
 </head>
 
 <body>
-  <?php include_once("template_header.php") ?>
+  <?php include_once "template_header.php" ?>
   <!-- <section class="banner">
     <div class="banner__wrapper">
       <h1>存放技術之地</h1>
@@ -42,21 +43,20 @@ $result = $stmt->get_result();
       <?php while ($row = $result->fetch_assoc()) { ?>
         <div class="admin-posts">
           <div class="admin-post">
-            <a method="POST" href="edit.php?id=<?= $row["id"] ?>" class="admin-post__title" style="text-decoration:none;">
+            <a method="POST" href="edit.php?id=<?= escape($row["id"]) ?>" class="admin-post__title" style="text-decoration:none;">
               <?= escape($row["title"]) ?>
             </a>
             <div class="admin-post__info">
               <div class="admin-post__created-at">
                 <?= escape($row["created_at"]) ?>
               </div>
-              <a class="admin-post__btn" method="POST" href="edit.php?id=<?= $row["id"] ?>">編輯</a>
-              <a class="admin-post__btn" method="POST" href="handle_post_del.php?id=<?= $row["id"] ?>">刪除</a>
+              <a class="admin-post__btn" method="POST" href="edit.php?id=<?= escape($row["id"]) ?>">編輯</a>
+              <a class="admin-post__btn" method="POST" href="handle_post_del.php?id=<?= escape($row["id"]) ?>">刪除</a>
             </div>
           </div>
         </div><? } ?>
     </div>
   </div>
-  <?php include("template_footer.php") ?>
+  <?php include "template_footer.php"?>
 </body>
-
 </html>

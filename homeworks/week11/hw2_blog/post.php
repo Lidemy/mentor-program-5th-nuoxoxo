@@ -1,11 +1,10 @@
 <?php 
 session_start();
-require_once("conn.php");
-require_once("utils.php");
-require_once("handle_check_permission.php");
+require_once "conn.php";
+require_once "utils.php";
 
 if (empty($_GET["id"])) {
-  header("Location: admin.php");
+  header("Location: index.php");
   die(); 
 }
 
@@ -36,26 +35,26 @@ $row = $result->fetch_assoc()
 
 <body>
   <nav class="navbar">
-  <?php include_once("template_header.php") ?>
+  <?php include_once "template_header.php" ?>
   <div class="container-wrapper">
     <div class="posts">
       <article class="post">
         <div class="post__header">
-          <div><?=$row["title"]?></div>
+          <div><?=escape($row["title"])?></div>
           <div class="post__actions">
             <a class="post__action" href="edit.php?id=<?=$id?>">編輯</a>
           </div>
         </div>
         <div class="post__info">
-        <?=$row["created_at"]?>
+        <?=escape($row["created_at"])?>
         </div>
         <div class="post__content">
-        <?=$row["content"]?>
+        <?=escape($row["content"])?>
         </div>
       </article>
     </div>
   </div>
-  <?php include("template_footer.php") ?>
+  <?php include "template_footer.php" ?>
 </body>
 
 </html>

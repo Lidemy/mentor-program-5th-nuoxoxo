@@ -1,7 +1,9 @@
 <?php
 session_start();
-require_once("conn.php");
-require_once("utils.php");
+
+require_once "conn.php";
+require_once "utils.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +18,7 @@ require_once("utils.php");
 </head>
 
 <body>
-  <?php include_once("template_header.php") ?>
+  <?php include_once "template_header.php" ?>
   <!-- <section class="banner">
     <div class="banner__wrapper">
       <h1>存放技術之地</h1>
@@ -39,7 +41,7 @@ require_once("utils.php");
       <input type='submit' value="登入" />
     </form>
   </div>
-  <?php include("template_footer.php") ?>
+  <?php include "template_footer.php" ?>
 </body>
 
 </html>

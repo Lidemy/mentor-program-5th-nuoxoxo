@@ -12,7 +12,7 @@ function getUserFromSession($username) {
   return $user;
 }
 
-// text formatting
+// text formatting against xss
 function escape($str) {
   return htmlspecialchars($str, ENT_QUOTES);
 }

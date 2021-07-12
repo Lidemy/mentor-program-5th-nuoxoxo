@@ -1,8 +1,9 @@
 <?php 
 session_start();
-require_once("conn.php");
-require_once("utils.php");
-require_once("handle_check_permission.php");
+
+require_once "conn.php";
+require_once "utils.php";
+require_once "handle_check_permission.php";
 
 if (empty($_GET["id"])) {
   header("Location: admin.php");
@@ -34,17 +35,17 @@ $row = $result->fetch_assoc()
 </head>
 
 <body>
-  <?php include_once("template_header.php") ?>
+  <?php include_once "template_header.php" ?>
   <div class="container-wrapper">
     <div class="container">
       <div class="edit-post">
         <form action="handle_post_edit.php?id=<?=$id?>" method="POST">
           <div class="edit-post__title">編輯文章：</div>
           <div class="edit-post__input-wrapper">
-            <input name="updated_title" class="edit-post__input" value="<?=$row['title']?>" autocomplete="off"/>
+            <input name="updated_title" class="edit-post__input" value="<?=escape($row['title'])?>" autocomplete="off"/>
           </div>
           <div class="edit-post__input-wrapper">
-            <textarea name="updated_content" rows="20" class="edit-post__content"><?=$row['content']?></textarea>
+            <textarea name="updated_content" rows="20" class="edit-post__content"><?=escape($row['content'])?></textarea>
           </div>
           <div class="edit-post__btn-wrapper">
             <button type="sumbit" class="edit-post__btn" style="user-select:none">送出</button>
@@ -53,7 +54,7 @@ $row = $result->fetch_assoc()
       </div>
     </div>
   </div>
-  <?php include("template_footer.php") ?>
+  <?php include "template_footer.php" ?>
 </body>
 
 </html>

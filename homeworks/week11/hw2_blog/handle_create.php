@@ -4,7 +4,7 @@ session_start();
 require_once("conn.php");
 require_once("utils.php");
 
-if (empty($_POST["content"]) or empty($_POST["title"])) {
+if (empty($_POST["content"]) || empty($_POST["title"])) {
   $message = "資料不齊";
   echo "<script>alert('$message');</script>"; 
   header("Location: create.php");

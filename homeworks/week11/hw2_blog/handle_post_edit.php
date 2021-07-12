@@ -4,7 +4,7 @@ session_start();
 require_once("conn.php");
 require_once("utils.php");
 
-if (empty($_POST["updated_content"]) or empty($_POST["updated_title"])) {
+if (empty($_POST["updated_content"]) || empty($_POST["updated_title"])) {
   $message = "資料不齊";
   echo "<script>alert('$message');</script>"; 
   header("Location: edit.php");

@@ -1,8 +1,8 @@
 <?php 
   session_start();
-  require_once("conn.php");
-  require_once("utils.php");
-  require_once("handle_check_permission.php");
+  require_once "conn.php";
+  require_once "utils.php";
+  require_once "handle_check_permission.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <?php include_once("template_header.php") ?>
+  <?php include_once "template_header.php" ?>
   <div class="container-wrapper">
     <div class="container">
       <div class="edit-post">
@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <?php include("template_footer.php") ?>
+  <?php include "template_footer.php" ?>
 </body>
 
 </html>
