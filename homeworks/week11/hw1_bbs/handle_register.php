@@ -9,7 +9,7 @@ if (
     empty($_POST["password"])
 ) {
     header("Location: register.php");
-    die();
+    exit;
 }
 
 $nickname = $_POST["nickname"];
@@ -28,8 +28,8 @@ if (!$result) {
         $message = "帳戶已被註冊";
         echo "<script>window.location.href='register.php';alert('$message');</script>"; 
     }
-    // die();
-    die($conn->error);
+    // exit;
+    exit($conn->error);
 }
 
 $_SESSION["username"] = $username;

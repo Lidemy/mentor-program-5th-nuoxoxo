@@ -1,15 +1,27 @@
 <?php
 
 session_start();
-
 require_once("conn.php");
 require_once("utils.php");
 
-$username = $_SESSION["username"];
+$username = NULL;
 
-if (empty($_POST['content'])) {
+if (empty($_SESSION["username"])) {
+  $username = $_SESSION["username"];
+  $user = getUserFromSession($username);
+}
+
+if ($user["role"] == "BANNED") {
+  $message = "你已被停權";
+  echo "<script>window.location.href='index.php';
+  alert('$message');
+  </script>";
+  exit;
+}
+
+if (empty($_POST["content"])) {
   header("Location: index.php"); 
-  die('資料不齊全');
+  exit('資料不齊全');
 }
 
 $content = mysqli_real_escape_string($conn, $_POST["content"]);
@@ -20,7 +32,7 @@ $stmt->bind_param("ss", $username, $content);
 $result = $stmt->execute();
 
 if (!$result) {
-    die($conn->error);
+    exit($conn->error);
 }
 
 header("Location: index.php");

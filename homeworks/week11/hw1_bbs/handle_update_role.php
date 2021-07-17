@@ -4,7 +4,7 @@ require_once("conn.php");
 require_once("utils.php");
 
 if (!$_GET["id"] || !$_GET["role"]) {
-    header("Location: admin.php"); die();
+    header("Location: admin.php"); exit;
 }
 
 $id=$_GET["id"];
@@ -20,7 +20,7 @@ if (!empty($_SESSION["username"])) {
 
 if (!$user || $user["role"] !== "ADMIN") {
     header("Location: admin.php"); 
-    // die();
+    // exit;
     exit;
 }
 

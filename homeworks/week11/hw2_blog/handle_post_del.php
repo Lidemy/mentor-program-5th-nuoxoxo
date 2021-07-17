@@ -1,17 +1,18 @@
 <?php
 
 session_start();
-require_once("conn.php");
-require_once("utils.php");
+require_once "conn.php";
+require_once "utils.php";
+require_once "handle_check_permission.php";
 
 if (empty($_GET["id"])) {
-  header("Location: admin.php");
-  die(); 
+  header("Location: dashboard.php");
+  exit; 
 }
 
 $id = $_GET["id"];
 
-// $username = $_SESSION["username"];
+// $username = $_SESSION["logon_name"];
 // $content = $_POST["content"];
 // $title = $_POST["title"];
 
@@ -21,9 +22,9 @@ $stmt->bind_param("i", $id);
 $result = $stmt->execute();
 
 if (!$result) {
-  die($conn->error);
+  exit($conn->error);
 }
 
-header("Location: admin.php");
+header("Location: dashboard.php");
 
 ?>

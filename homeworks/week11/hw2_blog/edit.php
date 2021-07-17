@@ -6,8 +6,8 @@ require_once "utils.php";
 require_once "handle_check_permission.php";
 
 if (empty($_GET["id"])) {
-  header("Location: admin.php");
-  die(); 
+  header("Location: dashboard.php");
+  exit; 
 }
 
 $id = $_GET["id"];
@@ -17,7 +17,7 @@ $stmt->bind_param("i", $id);
 $result = $stmt->execute();
 
 if (!$result) {
-  die("Error: " . $conn->error);
+  exit("Error: " . $conn->error);
 }
 
 $result = $stmt->get_result();
@@ -39,10 +39,14 @@ $row = $result->fetch_assoc()
   <div class="container-wrapper">
     <div class="container">
       <div class="edit-post">
-        <form action="handle_post_edit.php?id=<?=$id?>" method="POST">
+        <!-- <form action="handle_post_edit.php?id=<?=$id?>" method="POST"> -->
+        <form action="handle_post_edit.php" method="POST">
+          <!-- Change from `.php?id=` to a hidden input -->  
+          <input type="hidden" name="id" value="<?=escape($id)?>"/>
+          <input type="hidden" name="page" value="<?=$_SERVER["HTTP_REFERER"]?>"/>
           <div class="edit-post__title">編輯文章：</div>
           <div class="edit-post__input-wrapper">
-            <input name="updated_title" class="edit-post__input" value="<?=escape($row['title'])?>" autocomplete="off"/>
+            <input name="updated_title" class="edit-post__input" value="<?=escape($row["title"])?>" autocomplete="off"/>
           </div>
           <div class="edit-post__input-wrapper">
             <textarea name="updated_content" rows="20" class="edit-post__content"><?=escape($row['content'])?></textarea>

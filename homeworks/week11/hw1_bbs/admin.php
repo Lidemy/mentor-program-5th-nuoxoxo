@@ -19,7 +19,7 @@ if ($user["role"] !== "ADMIN") {
 if ((empty($_GET["page"])) || $_GET["page"] == 0){
   $page = 1;
 } else {
-  $page = $_GET["page"];
+  $page = intval($_GET["page"]);
 }
 
 $sql_admin = "SELECT id, role, nickname, username, created_at FROM a_users ORDER BY created_at DESC LIMIT ? OFFSET ? ";
@@ -31,7 +31,8 @@ $stmt->bind_param("ii", $limit, $offset);
 $result = $stmt->execute();
 
 if (!$result) {
-  die("Error: " . $conn->error);
+  header("Location: index.php");
+  exit;
 }
 
 $result = $stmt->get_result();
@@ -115,7 +116,7 @@ $result = $stmt->get_result();
     $sql_users = "SELECT COUNT(id) as count FROM a_users";
     $stmt = $conn->prepare($sql_users);
     $result = $stmt->execute();
-    if (!$result) {die("Error: " . $conn->error);}
+    if (!$result) {exit("Error: " . $conn->error);}
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
     $count = $row["count"];
@@ -126,7 +127,7 @@ $result = $stmt->get_result();
     <div class="page">
       <div class="pagecount">
         <span>共 <?= escape($count) ?> 個用戶</span><br>
-        <span>頁數：<?= $page ?> / <?= $page_total ?></span>
+        <span>頁數：<?= escape($page) ?> / <?= escape($page_total) ?></span>
       </div>
       <div class="pagination">
         <?php if ($page == 1 || $page == 0) { ?>

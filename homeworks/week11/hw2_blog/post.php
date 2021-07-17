@@ -5,7 +5,7 @@ require_once "utils.php";
 
 if (empty($_GET["id"])) {
   header("Location: index.php");
-  die(); 
+  exit; 
 }
 
 $id = $_GET["id"];
@@ -15,7 +15,7 @@ $stmt->bind_param("i", $id);
 $result = $stmt->execute();
 
 if (!$result) {
-  die("Error: " . $conn->error);
+  exit("Error: " . $conn->error);
 }
 
 $result = $stmt->get_result();
@@ -40,10 +40,17 @@ $row = $result->fetch_assoc()
     <div class="posts">
       <article class="post">
         <div class="post__header">
-          <div><?=escape($row["title"])?></div>
-          <div class="post__actions">
+          <div class="post__header__title"><?=escape($row["title"])?></div>
+          
+          <? if (!empty($_SESSION["logon_name"])) { ?>
+            <div class="post__actions">
+              <a class="post__action" href="edit.php?id=<?=escape($row["id"])?>">編輯</a>
+            </div>
+          <?}?>
+          
+          <!-- <div class="post__actions">
             <a class="post__action" href="edit.php?id=<?=$id?>">編輯</a>
-          </div>
+          </div> -->
         </div>
         <div class="post__info">
         <?=escape($row["created_at"])?>

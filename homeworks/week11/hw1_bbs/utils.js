@@ -1,12 +1,12 @@
 // Load selectors
-var btn_update_nickname = document.querySelector(".update-nickname")
-var btn_update_comment = document.querySelectorAll(".update-comment")
-var btn_reply = document.querySelectorAll(".reply-comment")
-var forms = document.querySelectorAll("form")
-var check_updated_comment = document.getElementById("form__update-comment")
+const btn_update_nickname = document.querySelector(".update-nickname")
+const btn_update_comment = document.querySelectorAll(".update-comment")
+const btn_reply = document.querySelectorAll(".reply-comment")
+const forms = document.querySelectorAll("form")
+const check_updated_comment = document.getElementById("form__update-comment")
 
 // Show nickname edit field
-if (btn_update_nickname !== null) {
+if (!btn_update_nickname) {
   btn_update_nickname.addEventListener("click", function() {
   var form = document.querySelector(".board__nickname-form")
   form.classList.toggle("hide")
@@ -16,7 +16,7 @@ if (btn_update_nickname !== null) {
 // Show comment edit field
 for (let i = 0; i < btn_update_comment.length; i++) {
   btn_update_comment[i].addEventListener("click", function() {
-    var form = btn_update_comment[i].parentElement.parentElement.lastElementChild
+    var form = btn_update_comment[i].closest(".form");    
     form.classList.toggle("hide")
   })
 }
@@ -35,12 +35,7 @@ for (let i = 0; i < btn_reply.length; i++) {
     | ${text}`
   })
 }
-// if (btn_reply_comment !== null) {
-//   btn_reply_comment.addEventListener("click", function() {
-//     var textarea = document.getElementById("content")
-//     console.log(textarea.innerText)
-//   })
-// }
+
 
 // Check if empty
 for (let i = 0; i < forms.length; i++) {
@@ -53,16 +48,15 @@ for (let i = 0; i < forms.length; i++) {
 }
 
 // Check unedited text
-if (check_updated_comment !== null) {
+if (!check_updated_comment) {
   check_updated_comment.onsubmit = function() {
-    let valueOld = check_updated_comment
+    let value_old = check_updated_comment
       .parentElement
       .getElementsByTagName("p")[0].innerText
-    let valueNew = check_updated_comment
+    let value_new = check_updated_comment
       .getElementsByTagName("div")[0]
       .getElementsByTagName("textarea")[0].value
-    // console.log(valueOld); console.log(valueNew); 
-    if (valueOld === valueNew) {
+    if (value_old === value_new) {
       alert("提交內容為重複")
       return false
     }

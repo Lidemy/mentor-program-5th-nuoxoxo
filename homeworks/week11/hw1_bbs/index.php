@@ -35,7 +35,7 @@ $stmt->bind_param("ii", $limit, $offset);
 $result = $stmt->execute();
 
 if (!$result) {
-  die("Error: " . $conn->error);
+  exit("Error: " . $conn->error);
 }
 
 $result = $stmt->get_result();
@@ -138,7 +138,7 @@ $result = $stmt->get_result();
     $sql_info = "SELECT COUNT(id) as count FROM a_bbs WHERE is_deleted IS NULL";
     $stmt = $conn->prepare($sql_info);
     $result = $stmt->execute();
-    if (!$result) {die("Error: " . $conn->error);}
+    if (!$result) {exit("Error: " . $conn->error);}
     
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();

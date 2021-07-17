@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-require_once("conn.php");
-require_once("utils.php");
+require_once "conn.php";
+require_once "utils.php";
 
 if (empty($_POST["username"]) || empty($_POST["password"])) {
     header("Location: login.php");
-    die();
+    exit;
 }
 
 $username = $_POST["username"];
@@ -18,7 +18,7 @@ $stmt->bind_param("s", $username);
 $result = $stmt->execute();
 
 if (!$result) {
-    die($conn->errno);
+    exit($conn->errno);
 }
 
 $result = $stmt->get_result();
@@ -29,13 +29,13 @@ if ($result->num_rows === 0) {
     <script>window.location.href='login.php';
     alert('$message');
     </script>";
-    exit();
+    exit;
 }
 
 $row = $result->fetch_assoc();
 
 if (password_verify($password, $row["password"])) {
-    $_SESSION["username"] = $username;
+    $_SESSION["logon_name"] = $username;
     header("Location: index.php");
 } else {
     $message = "密碼輸入錯誤";

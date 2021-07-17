@@ -1,6 +1,6 @@
 <?php
 $uri = $_SERVER["REQUEST_URI"];
-$isPathAdmin = (strpos($uri, "admin.php") == false);
+$isPathAdmin = (strpos($uri, "dashboard.php") == false);
 ?>
 
 <nav class="navbar">
@@ -16,10 +16,10 @@ $isPathAdmin = (strpos($uri, "admin.php") == false);
         <li><a href="#">關於我</a></li> -->
       </div>
       <div>
-        <?php if (!empty($_SESSION["username"])) { ?>
+        <?php if (!empty($_SESSION["logon_name"])) { ?>
           <? if ($isPathAdmin) { ?>
             <li><a onclick="goBack()">返回</a></li>
-            <li><a href="admin.php">管理後台</a></li>
+            <li><a href="dashboard.php">管理後台</a></li>
           <? } else { ?>
             <li><a onclick="goBack()">返回</a></li>
           <? } ?>
@@ -34,38 +34,58 @@ $isPathAdmin = (strpos($uri, "admin.php") == false);
 </nav>
 <section class="banner">
   <div class="banner__wrapper">
-    <h1><?php $n = rand(1, 7);
-        if ($n == 1) {
+    <h1>
+      <?php $n = rand(1, 7);
+      switch ($n) {
+        case 1:
           echo "(=^ェ^=)";
-        } elseif ($n == 2) {
+          break;
+        case 2:
           echo "(ᵔᴥᵔ)";
-        } elseif ($n == 3) {
+          break;
+        case 3:
           echo "昭和十大部落格";
-        } elseif ($n == 4) {
+          break;
+        case 4:
           echo "♪♪♪♫•*¨*•.¸¸♪";
-        } elseif ($n == 5) {
+          break;
+        case 5:
           echo "肉";
-        } elseif ($n == 6) {
+          break;
+        case 6:
           echo "(・_・ヾ";
-        } elseif ($n == 7) {
+          break;
+        case 7:
           echo "( ͡° ʖ̯ ͡°)";
-        } ?></h1>
-    <div><?php $n = rand(1, 7);
-          if ($n == 1) {
-            echo "( ͡° ͜ʖ ͡°)";
-          } elseif ($n == 2) {
-            echo "很好";
-          } elseif ($n == 3) {
-            echo "愛自由";
-          } elseif ($n == 4) {
-            echo "大自然";
-          } elseif ($n == 5) {
-            echo "古代";
-          } elseif ($n == 6) {
-            echo "昭和十大部落格";
-          } elseif ($n == 7) {
-            echo "有一種感覺";
-          } ?></div>
+          break;
+      } ?>
+    </h1>
+    <div>
+      <?php $n = rand(1, 7);
+      switch ($n) {
+        case 1:
+          echo "很好";
+          break;
+        case 2:
+          echo "(ᵔᴥᵔ)";
+          break;
+        case 3:
+          echo "愛自由";
+          break;
+        case 4:
+          echo "大自然";
+          break;
+        case 5:
+          echo "古代";
+          break;
+        case 6:
+          echo "昭和十大部落格";
+          break;
+        case 7:
+          echo "有一種感覺";
+          break;
+      } ?>
+    </div>
   </div>
 </section>
 <script>

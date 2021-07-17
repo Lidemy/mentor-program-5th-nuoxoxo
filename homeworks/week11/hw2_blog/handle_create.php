@@ -1,17 +1,18 @@
 <?php
 
 session_start();
-require_once("conn.php");
-require_once("utils.php");
+require_once "conn.php";
+require_once "utils.php";
+require_once "handle_check_permission.php";
 
 if (empty($_POST["content"]) || empty($_POST["title"])) {
   $message = "資料不齊";
   echo "<script>alert('$message');</script>"; 
   header("Location: create.php");
-  die(); 
+  exit; 
 }
 
-$username = $_SESSION["username"];
+$username = $_SESSION["logon_name"];
 // $user = getUserFromSession($username);
 // $content = mysqli_real_escape_string($conn, $_POST["content"]);
 $content = $_POST["content"];
@@ -24,9 +25,9 @@ $result = $stmt->execute();
 
 if (!$result) {
   echo "$username" . "$title" . "$content";
-  die($conn->error);
+  exit($conn->error);
 }
 
-header("Location: admin.php");
+header("Location: dashboard.php");
 
 ?>
