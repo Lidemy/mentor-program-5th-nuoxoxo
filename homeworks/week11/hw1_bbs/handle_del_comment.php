@@ -34,9 +34,7 @@ if (empty($_GET["id"])) {
 $id = $_GET["id"];
 $temp = getContentFromId($id);
 
-if (
-  ($temp["username"] !== $user["username"]) && $user["role"] !== "ADMIN"
-  ){
+if ($temp["username"] !== $user["username"] && $user["role"] !== "ADMIN"){
   echo "
   <script>window.location.href='index.php';
   alert('$message1');</script>";
@@ -53,6 +51,6 @@ if (!$result) {
     exit($conn->error);
 }
 
-header("Location: index.php");
+header("Location: " . $_SERVER["HTTP_REFERER"]);
 
 ?>

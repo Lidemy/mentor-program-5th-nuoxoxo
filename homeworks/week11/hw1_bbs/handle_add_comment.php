@@ -6,7 +6,7 @@ require_once("utils.php");
 
 $username = NULL;
 
-if (empty($_SESSION["username"])) {
+if (!empty($_SESSION["username"])) {
   $username = $_SESSION["username"];
   $user = getUserFromSession($username);
 }
@@ -35,6 +35,6 @@ if (!$result) {
     exit($conn->error);
 }
 
-header("Location: index.php");
+header("Location: " . $_SERVER["HTTP_REFERER"]);
 
 ?>

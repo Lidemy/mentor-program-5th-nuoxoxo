@@ -6,7 +6,7 @@ const forms = document.querySelectorAll("form")
 const check_updated_comment = document.getElementById("form__update-comment")
 
 // Show nickname edit field
-if (!btn_update_nickname) {
+if (btn_update_nickname) {
   btn_update_nickname.addEventListener("click", function() {
   var form = document.querySelector(".board__nickname-form")
   form.classList.toggle("hide")
@@ -16,7 +16,11 @@ if (!btn_update_nickname) {
 // Show comment edit field
 for (let i = 0; i < btn_update_comment.length; i++) {
   btn_update_comment[i].addEventListener("click", function() {
-    var form = btn_update_comment[i].closest(".form");    
+    // console.log(btn_update_comment[i])
+    // var form = btn_update_comment[i].closest("#form__update-comment")
+    // var form = btn_update_comment[i].parentNode.parentNode.children
+    var form = btn_update_comment[i].closest(".card__body").querySelector("form")
+    // console.log(form)
     form.classList.toggle("hide")
   })
 }
@@ -25,12 +29,12 @@ for (let i = 0; i < btn_update_comment.length; i++) {
 for (let i = 0; i < btn_reply.length; i++) {
   btn_reply[i].addEventListener("click", function() {
     let area = document.getElementById("content")
-    let user = btn_reply[i]
-    .parentElement.querySelector(".card__author").innerText
+    let user = btn_reply[i].parentElement.querySelector(".card__author").innerText
     let text = btn_reply[i]
       .parentElement
       .parentElement
-      .getElementsByTagName("p")[0].innerText
+      .getElementsByTagName("p")[0]
+      .innerText
     area.innerHTML = `Reply to: ${user}
     | ${text}`
   })

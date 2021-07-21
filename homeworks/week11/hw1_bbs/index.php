@@ -97,27 +97,42 @@ $result = $stmt->get_result();
         <div class="card__body">
           <div class="card__info noselect">
             <span class="card__author">
-              <?= escape($row["nickname"])  ?>
-              (@<?= escape($row["username"]) ?>)
+              <?=escape($row["nickname"])?>(@<?= escape($row["username"]) ?>)
             </span>
-            <span class="card__time"><?= escape($row["created_at"]) ?></span>
-            <?php if (!empty($_SESSION["username"])) { 
+            <span class="card__time">
+              <?=escape($row["created_at"])?>
+            </span>
+            
+            <?php 
+            
+            // Reply button
+            if (!empty($_SESSION["username"])) {
               if ($user["role"] === "BANNED") { ?>
                 <a class="disabled-btn">回覆</a>
               <?} else {?>
                 <a class="reply-comment edit-btn ">回覆</a>
               <? } 
-            } ?>
-            <?php if ($row["username"] === $username) { 
-              if (!$user["role"] === "BANNED") { ?>
-                <a class="disabled-btn ">編輯</a>
-                <a class="disabled-btn ">刪除</a>
-              <?} else {?>
-              <a class="update-comment edit-btn ">編輯</a>
-              <a class="delete-comment edit-btn " method="POST" href="handle_del_comment.php?id=<?= escape($row['id']) ?>">刪除</a>
-              <? } 
-            } ?>
-          </div>          
+            }
+
+            // Edit and delete button
+            if (!empty($_SESSION["username"])) {
+              if ($row["username"] !== $username) {
+                if ($user["role"] === "ADMIN") {?>
+                  <a class="update-comment edit-btn">編輯</a>
+                  <a class="delete-comment edit-btn" method="POST" href="handle_del_comment.php?id=<?= escape($row['id']) ?>">刪除</a>
+                <?}
+              } else {
+                if ($user["role"] === "BANNED") {?>
+                  <a class="disabled-btn ">編輯</a>
+                  <a class="disabled-btn ">刪除</a>
+                <?} else {?>
+                  <a class="update-comment edit-btn">編輯</a>
+                  <a class="delete-comment edit-btn" method="POST" href="handle_del_comment.php?id=<?= escape($row['id']) ?>">刪除</a>
+                <?}
+              }
+            }?>
+            
+          </div>
           <p class="card__content"><?= escape($row["content"]) ?></p>
           <form id="form__update-comment" method="POST" action="handle_update_comment.php?id=<?= escape($row['id']) ?>" class="hide /*board__new-comment-form*/">
             <div class="board__nickname" style="margin-bottom:0px;">

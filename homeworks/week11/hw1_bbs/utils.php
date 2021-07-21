@@ -22,13 +22,13 @@ function getContentFromId($id) {
 }
 
 // Generate token
-function genToken() {
-  $str = "";
-  for ($i = 0; $i < 16; $i++) {
-    $str .= chr(rand(65, 90));      
-  }
-  return $str;
-}
+// function genToken() {
+//   $str = "";
+//   for ($i = 0; $i < 16; $i++) {
+//     $str .= chr(rand(65, 90));      
+//   }
+//   return $str;
+// }
 
 // text formatting
 function escape($str) {

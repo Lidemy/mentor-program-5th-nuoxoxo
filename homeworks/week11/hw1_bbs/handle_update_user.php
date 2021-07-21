@@ -37,6 +37,6 @@ if ($conn->errno === 1062) {
     exit;
 }
 
-header("Location: index.php")
+header("Location: " . $_SERVER["HTTP_REFERER"]);
 
 ?>
