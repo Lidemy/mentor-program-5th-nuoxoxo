@@ -18,10 +18,31 @@
     .noselect {user-select:none;}
     .rainbow {background-image: linear-gradient(to left, green, gold, orange, red);margin-bottom:1em}
   </style>
-  <script>
+  <title>留言板 API</title>
+</head>
+
+<body>
+  <div class="container">
+    <form id="new-post">
+      <div class="form-group">
+        <label>留言板</label>
+        <!-- <h1>留 言 板 ！</h1> -->
+        <div class="rainbow noselect">&nbsp;</div>
+        <div class="form-group">
+          <input name="form-nickname" class="form-control-file" id="form-nickname" placeholder=" Nickname" autocomplete="off">
+        </div>
+        <textarea class="form-control" id="form-content" name="form-content" rows="3" placeholder="Write something."></textarea>
+        <small class="form-text text-muted">A Better Life, A Better World</small>
+        <small class="form-text text-muted">Panasonic</small>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</body>
+<script>
 
   const site_key = "nxu"
-  const loadMoreBtn = `<div class="btns"><button id="totop" class="btn btn-danger">Back to Top</button> <button id="load" class="load btn btn-warning">Load More</button></div>`
+  const loadMoreBtn = `<div class="btns"><button id="totop" class="btn btn-info">Back to Top</button> <button id="load" class="load btn btn-warning">Load More</button></div>`
   let before = null
   let end = false
 
@@ -35,7 +56,7 @@
   }  
 
   function getStuff(site_key, before, callback) {
-    let url = `api_json.php?site_key=${site_key}`
+    let url = `bbs_api.php?site_key=${site_key}`
     if (before) {
       url += "&before=" + before
     }
@@ -78,12 +99,16 @@
       }
       
       const posts = data.posts
-      for (let post of posts) {
-        loadStuff(post)
+      if (posts.length == 0){
+        return
+      } else {
+        for (let post of posts) {
+          loadStuff(post)
+        }
+        $(".container").append(loadMoreBtn)
+        // before = posts[posts.length - 1].created_at
+        before = posts[posts.length - 1].id
       }
-      $(".container").append(loadMoreBtn)
-      // before = posts[posts.length - 1].created_at
-      before = posts[posts.length - 1].id
     })
 
     // Click load more button
@@ -98,11 +123,8 @@
 
         if (posts.length == 0) {
           end = true
-          // $("#load").last().html("End")
-          // $("#load").last().removeClass("btn-warning").addClass("btn-danger")
           $("#load").remove()
-          $("#totop").removeClass("btn-warning").addClass("btn-danger").html("(o > .< )o ")
-          // $(".container").append(`<button id="refresh" class="btn btn-dark">Reload</button>`)
+          $("#totop").removeClass("btn-warning").addClass("btn-success").html("(o > .< )o ")
           return
         }
 
@@ -111,10 +133,8 @@
         }
 
         $(".container").append(loadMoreBtn)
-
         // before = posts[posts.length - 1].created_at
         before = posts[posts.length - 1].id
-      
       })
     })
 
@@ -127,7 +147,7 @@
       e.preventDefault()
       $.ajax({
         type: "POST", 
-        url: "api_send.php",
+        url: "bbs_api_send.php",
         data: {
           site_key: site_key,
           nickname: $("input#form-nickname").val(),
@@ -144,27 +164,5 @@
     })
   })
 
-  </script>
-  <title>留言板 API</title>
-</head>
-
-<body>
-  <div class="container">
-    <form id="new-post">
-      <div class="form-group">
-        <label>留言板</label>
-        <!-- <h1>留 言 板 ！</h1> -->
-        <div class="rainbow noselect">&nbsp;</div>
-        <div class="form-group">
-          <input name="form-nickname" class="form-control-file" id="form-nickname" placeholder=" Nickname" autocomplete="off">
-        </div>
-        <textarea class="form-control" id="form-content" name="form-content" rows="3" placeholder="Write something."></textarea>
-        <small class="form-text text-muted">A Better Life, A Better World</small>
-        <small class="form-text text-muted">Panasonic</small>
-      </div>
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-  </div>
-</body>
-
+</script>
 </html>

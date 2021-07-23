@@ -20,7 +20,7 @@ $sql_query = "SELECT id, nickname as ni, content as co, created_at as cr FROM a_
 // (empty($_GET["before"]) ? "" : " AND cr < ? ")
 (empty($_GET["before"]) ? "" : " AND id < ? ")
 .
-"ORDER BY cr DESC LIMIT 10";
+"ORDER BY cr DESC LIMIT 3";
 
 $stmt = $conn->prepare($sql_query);
 
