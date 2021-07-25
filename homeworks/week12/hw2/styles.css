@@ -1,0 +1,85 @@
+.rainbow {
+    background-image: linear-gradient(to left, green, gold, orange, red)
+}
+
+.container {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    max-width: 520px
+}
+
+.unfinished {
+    color: orange
+}
+
+.btn-add {
+    min-width: 120px
+}
+
+.btn-delete {
+    opacity: 0;
+    min-width: 120px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.input-group {
+    margin: 1.1em auto
+}
+
+.todo:hover .btn-delete {
+    opacity: 1
+}
+
+.todo__content-wrapper {
+    flex: 1 1 auto
+}
+
+.list-group-item {
+    padding: 0;
+    padding-left: 10px
+}
+
+.options div,
+.clear-all,
+.mark-all {
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 4px;
+    border: 2px solid transparent
+}
+
+.mt-1,
+.my-1 {
+    margin: 1.25rem auto !important
+}
+
+.ml-2 {
+    margin: 0px auto
+}
+
+.options div.active {
+    border-color: rgba(255, 0, 0, 0.3)
+}
+
+.options div:hover {
+    border-color: rgba(255, 0, 0, 0.5)
+}
+
+.hide {
+    display: none !important
+}
+
+.noselect {
+    user-select: none
+}
+
+input[type=checkbox]:checked~label {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.3)
+}
