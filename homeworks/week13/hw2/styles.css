@@ -1,0 +1,10 @@
+.container {margin-top:32px; margin-bottom:32px;max-width:600px}
+.btn {width:128px}
+.btns {margin:12px auto}
+.card {margin:12px auto; max-width:600px}
+.card-title {color:grey}
+.card-text {font-size:16px}
+.form-control {min-height:160px;font-size:18px}
+.form-control-file {border: 1px solid #ced4da;border-radius: .25rem}
+.noselect {user-select:none;}
+.rainbow {background-image:linear-gradient(to left,green,gold,orange,red);margin-bottom:1em}
